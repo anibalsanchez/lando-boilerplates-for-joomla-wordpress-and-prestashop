@@ -1,0 +1,93 @@
+##
+# package     Extly.VM
+# subpackage  SCA-WS-Auth
+#
+# author      Extly, CB.
+# copyright   Copyright (C) 2007 - 2017 Extly, CB. All rights reserved.
+# license     http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
+# link        http://extly.tech
+##
+
+name: lampboilerplate
+
+proxy:
+  appserver:
+    - lampboilerplate.lndo.site
+  pma:
+    - phpmyadmin.lndo.site
+  mailhog:
+    - mailhog.lndo.site
+    
+services:
+  appserver:
+    type: php:7.1
+    via: apache
+    ssl: false
+    webroot: www
+    config:
+      conf: config/php.ini
+    xdebug: true
+    extras:
+      - "apt-get -y update"
+
+      - "apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng12-dev"
+      - "docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/"
+      - "docker-php-ext-install gd"
+
+      # - "apt-get install -y libxslt1-dev"
+      # - "docker-php-ext-install xsl"      
+
+      # - "apt-get -y install libtidy-dev"
+      # - "docker-php-ext-install tidy"
+
+      # - "apt-get install -y libbz2-dev"
+      # - "docker-php-ext-install bz2"
+
+      # - "docker-php-ext-install bcmath"
+
+      # - "docker-php-ext-install calendar"
+      # - "docker-php-ext-install dba"      
+      # - "docker-php-ext-install mbstring"
+
+      # - "apt-get install -y libmcrypt-dev"
+      # - "docker-php-ext-install mcrypt"
+
+      # - "apt-get install -y libxml2-dev php-soap"
+      # - "docker-php-ext-install soap"
+
+  database:
+    type: mysql
+    portforward: 3308
+    creds:
+      user: lampboilerplatedb
+      password: lampboilerplatedb
+      database: lampboilerplatedb
+
+  pma:
+    type: phpmyadmin
+
+  phpcli:
+    type: php:7.1
+    via: cli
+    xdebug: true    
+
+  mailhog:
+    type: mailhog
+    hogfrom:
+      - appserver
+    portforward: 1026        
+
+tooling:
+  composer:
+    service: appserver
+    description: Run composer commands
+    cmd:
+      - composer
+      - --ansi
+  php:
+    service: appserver
+
+  mysql:
+    user: root
+    service: database
+    description: Drop into a MySQL shell
