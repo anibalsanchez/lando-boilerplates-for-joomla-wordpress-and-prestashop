@@ -23,7 +23,7 @@ services:
   appserver:
     type: php:7.1
     via: apache
-    ssl: false
+    ssl: true
     webroot: www
     config:
       conf: config/php.ini
