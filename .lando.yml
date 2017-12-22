@@ -13,6 +13,7 @@ name: lampboilerplate
 proxy:
   appserver:
     - lampboilerplate.lndo.site
+    - mars.extly.com      
   pma:
     - phpmyadmin.lndo.site
   mailhog:
