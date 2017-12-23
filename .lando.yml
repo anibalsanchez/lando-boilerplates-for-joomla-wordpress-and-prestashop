@@ -1,6 +1,6 @@
 ##
 # package     Extly.VM
-# subpackage  SCA-WS-Auth
+# subpackage  Lando Boilerplate
 #
 # author      Extly, CB.
 # copyright   Copyright (C) 2007 - 2017 Extly, CB. All rights reserved.
@@ -73,6 +73,13 @@ services:
       # - "docker-php-ext-enable sodium"
       # - "rm -rf $LANDO_MOUNT/libsodium"      
 
+    #
+    # To run Apache on the localhost
+    #
+    # overrides:
+    #   services:
+    #     ports: ['80:80']
+
   database:
     type: mysql
     portforward: 3308
@@ -84,10 +91,10 @@ services:
   pma:
     type: phpmyadmin
 
-  phpcli:
-    type: php:7.1
-    via: cli
-    xdebug: true    
+  # phpcli:
+  #   type: php:7.1
+  #   via: cli
+  #   xdebug: true    
 
   mailhog:
     type: mailhog
