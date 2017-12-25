@@ -29,29 +29,17 @@ services:
       conf: config/php.ini
     xdebug: true
     extras:
-      - "apt-get -y update"
+      # - "apt-get -y update"
 
-      - "apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng12-dev"
-      - "docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/"
-      - "docker-php-ext-install gd"
-
-      # - "apt-get install -y libxslt1-dev"
-      # - "docker-php-ext-install xsl"      
+      # - "apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng12-dev"
+      # - "docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/"
+      # - "docker-php-ext-install gd"
 
       # - "apt-get -y install libtidy-dev"
       # - "docker-php-ext-install tidy"
 
-      # - "apt-get install -y libbz2-dev"
-      # - "docker-php-ext-install bz2"
-
-      # - "docker-php-ext-install bcmath"
-
-      # - "docker-php-ext-install calendar"
-      # - "docker-php-ext-install dba"      
-      # - "docker-php-ext-install mbstring"
-
-      # - "apt-get install -y libmcrypt-dev"
-      # - "docker-php-ext-install mcrypt"
+      # - "apt-get install -y libxslt1-dev"
+      # - "docker-php-ext-install xsl"      
 
       # - "apt-get install -y libxml2-dev php-soap"
       # - "docker-php-ext-install soap"
@@ -71,18 +59,13 @@ services:
       #
       # - "pecl install libsodium"
       # - "docker-php-ext-enable sodium"
-      # - "rm -rf $LANDO_MOUNT/libsodium"      
+      # - "rm -rf $LANDO_MOUNT/libsodium"   
 
-    #
-    # To run Apache on the localhost
-    #
-    # overrides:
-    #   services:
-    #     ports: ['80:80']
+    ## build: 
 
   database:
     type: mysql
-    portforward: 3308
+    ## portforward: 3306    
     creds:
       user: lampboilerplatedb
       password: lampboilerplatedb
@@ -98,9 +81,9 @@ services:
 
   mailhog:
     type: mailhog
+    ## portforward: 1025
     hogfrom:
       - appserver
-    portforward: 1026        
 
 tooling:
   composer:
