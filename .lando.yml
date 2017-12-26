@@ -28,7 +28,7 @@ services:
     config:
       conf: config/php.ini
     xdebug: true
-    extras:
+    ## extras:
       # - "apt-get -y update"
 
       # - "apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng12-dev"
@@ -99,3 +99,12 @@ tooling:
     user: root
     service: database
     description: Drop into a MySQL shell
+
+  jconfigure:
+    service: appserver
+    description: "Apply my default configuration for JDevelopment"
+    cmd: echo Configuring my defaults in configuration.php for JDevelopment…    
+
+events:
+  post-jconfigure:
+      - appserver: test -e $LANDO_MOUNT/www/configuration.php && sh $LANDO_MOUNT/config/jconfigure.sh
