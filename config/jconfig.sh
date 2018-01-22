@@ -3,6 +3,7 @@
 cd /app/www
 
 cat configuration.php | \
+	sed "s/$mailer = 'mail'/$mailer = 'smtp'/g" | \
     sed "s/$lifetime = '15'/$lifetime = '150'/g" | \
     sed "s/$smtphost = 'localhost'/$smtphost = 'mailhog'/g" | \
     sed "s/$smtpport = '25'/$smtpport = '1025'/g" \

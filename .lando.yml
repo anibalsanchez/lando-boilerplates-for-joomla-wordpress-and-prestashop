@@ -109,4 +109,4 @@ tooling:
 
 events:
   post-jconfigure:
-      - appserver: test -e $LANDO_MOUNT/www/configuration.php && sh $LANDO_MOUNT/config/jconfigure.sh
+      - appserver: test -e $LANDO_MOUNT/www/configuration.php && sh $LANDO_MOUNT/config/jconfig.sh
