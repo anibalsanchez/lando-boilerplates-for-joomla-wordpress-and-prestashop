@@ -40,8 +40,9 @@ services:
       # - "apt-get -y install libtidy-dev"
       # - "docker-php-ext-install tidy"
 
-      # - "apt-get install -y libxslt1-dev"
-      # - "docker-php-ext-install xsl"      
+      # https://hub.docker.com/r/phpdocker/phpdocker/~/dockerfile/
+      # - "apt-get install -y libxml2-dev libxslt-dev"
+      # - "docker-php-ext-install dom xmlrpc xsl"      
 
       # - "apt-get install -y libxml2-dev php-soap"
       # - "docker-php-ext-install soap"
