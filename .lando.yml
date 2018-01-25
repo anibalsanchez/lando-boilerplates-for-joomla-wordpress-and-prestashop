@@ -21,7 +21,7 @@ proxy:
     
 services:
   appserver:
-    type: php:7.1
+    type: php:7.0
     via: apache
     ssl: true
     webroot: www
@@ -31,18 +31,19 @@ services:
     ## extras:
       # - "apt-get -y update"
 
-      ## Ubuntu - apt-get install -y php7.1-gd
+      ## Ubuntu - apt-get install -y php7.0-gd
       # - "apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng12-dev"
       # - "docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/"
       # - "docker-php-ext-install gd"
 
-      # Ubuntu - apt-get install -y php7.1-tidy
+      # Ubuntu - apt-get install -y php7.0-tidy
       # - "apt-get -y install libtidy-dev"
       # - "docker-php-ext-install tidy"
 
       # https://hub.docker.com/r/phpdocker/phpdocker/~/dockerfile/
       # - "apt-get install -y libxml2-dev libxslt-dev"
-      # - "docker-php-ext-install dom xmlrpc xsl"      
+      # - "docker-php-ext-install dom xmlrpc xsl" 
+      # - "apt-get install -y php7.1-xsl"    
 
       # - "apt-get install -y libxml2-dev php-soap"
       # - "docker-php-ext-install soap"
@@ -77,7 +78,7 @@ services:
     type: phpmyadmin
 
   # phpcli:
-  #   type: php:7.1
+  #   type: php:7.0
   #   via: cli
   #   xdebug: true    
 
