@@ -13,12 +13,12 @@ name: lampboilerplate
 proxy:
   appserver:
     - lampboilerplate.lndo.site
-    - mars.extly.com      
+    - mars.extly.com
   pma:
     - phpmyadmin.lndo.site
   mailhog:
     - mailhog.lndo.site
-    
+
 services:
   appserver:
     type: php:7.0
@@ -28,6 +28,10 @@ services:
     config:
       conf: config/php.ini
     xdebug: true
+    overrides:
+      services:
+        # A nice http://localhost:8080
+        ports: ['8080:80']
     ## extras:
       # - "apt-get -y update"
 
@@ -43,7 +47,7 @@ services:
       # Ubuntu - "apt-get install -y php7.1-xsl"
       # https://hub.docker.com/r/phpdocker/phpdocker/~/dockerfile/
       # - "apt-get install -y libxml2-dev libxslt-dev"
-      # - "docker-php-ext-install dom xmlrpc xsl"     
+      # - "docker-php-ext-install dom xmlrpc xsl"
 
       # - "apt-get install -y libxml2-dev php-soap"
       # - "docker-php-ext-install soap"
@@ -62,13 +66,13 @@ services:
       #
       # - "pecl install libsodium"
       # - "docker-php-ext-enable sodium"
-      # - "rm -rf $LANDO_MOUNT/libsodium"   
+      # - "rm -rf $LANDO_MOUNT/libsodium"
 
-    ## build: 
+    ## build:
 
   database:
     type: mysql
-    ## portforward: 3306    
+    ## portforward: 3306
     creds:
       user: lampboilerplatedb
       password: lampboilerplatedb
@@ -80,7 +84,7 @@ services:
   # phpcli:
   #   type: php:7.0
   #   via: cli
-  #   xdebug: true    
+  #   xdebug: true
 
   mailhog:
     type: mailhog
@@ -106,7 +110,7 @@ tooling:
   jconfig:
     service: appserver
     description: "Apply my default configuration for JDevelopment"
-    cmd: echo Configuring my defaults in configuration.php for JDevelopment…    
+    cmd: echo Configuring my defaults in configuration.php for JDevelopment…
 
 events:
   post-jconfig:
