@@ -6,13 +6,15 @@
 # copyright   Copyright (C) 2007 - 2017 Extly, CB. All rights reserved.
 # license     http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
 # link        http://extly.tech
-##
+#
+# WORKING WITH LAMP - https://docs.devwithlando.io/tutorials/lamp.html
+#
 
-name: lampboilerplate
+name: lamp_tpl
 
 proxy:
   appserver:
-    - lampboilerplate.lndo.site
+    - lamp_tpl.lndo.site
     - mars.extly.com
   pma:
     - phpmyadmin.lndo.site
@@ -68,15 +70,13 @@ services:
       # - "docker-php-ext-enable sodium"
       # - "rm -rf $LANDO_MOUNT/libsodium"
 
-    ## build:
-
   database:
     type: mysql
     ## portforward: 3306
     creds:
-      user: lampboilerplatedb
-      password: lampboilerplatedb
-      database: lampboilerplatedb
+      user: lamp_tpldb
+      password: lamp_tpldb
+      database: lamp_tpldb
 
   pma:
     type: phpmyadmin
@@ -107,11 +107,3 @@ tooling:
     service: database
     description: Drop into a MySQL shell
 
-  jconfig:
-    service: appserver
-    description: "Apply my default configuration for JDevelopment"
-    cmd: echo Configuring my defaults in configuration.php for JDevelopment…
-
-events:
-  post-jconfig:
-      - appserver: test -e $LANDO_MOUNT/www/configuration.php && sh $LANDO_MOUNT/config/jconfig.sh
