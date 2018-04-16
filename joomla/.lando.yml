@@ -16,7 +16,6 @@ recipe: joomla
 proxy:
   appserver:
     - joomla_tpl.lndo.site
-    - mars.extly.com
   pma:
     - phpmyadmin.lndo.site
   mailhog:

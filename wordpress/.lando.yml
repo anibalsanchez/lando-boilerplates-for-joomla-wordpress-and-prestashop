@@ -16,7 +16,6 @@ recipe: wordpress
 proxy:
   appserver:
     - wp_tpl.lndo.site
-    - mars.extly.com
   pma:
     - phpmyadmin.lndo.site
   mailhog:

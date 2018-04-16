@@ -15,7 +15,6 @@ name: lamp_tpl
 proxy:
   appserver:
     - lamp_tpl.lndo.site
-    - mars.extly.com
   pma:
     - phpmyadmin.lndo.site
   mailhog:
