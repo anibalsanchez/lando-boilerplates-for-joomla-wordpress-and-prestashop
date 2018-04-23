@@ -2,13 +2,15 @@
 
 cd /app/www
 
-cat configuration.php | \
-	sed "s/$mailer = 'mail'/$mailer = 'smtp'/g" | \
-    sed "s/$lifetime = '15'/$lifetime = '150'/g" | \
-    sed "s/$smtphost = 'localhost'/$smtphost = 'mailhog'/g" | \
-    sed "s/$smtpport = '25'/$smtpport = '1025'/g" \
-    > configuration.mydefault.php
+cp configuration.php configuration.php.bak
 
-rm -f configuration.php
-cp configuration.mydefault.php configuration.php
-rm configuration.mydefault.php
+cat configuration.php.bak | \
+    sed "s/\$lifetime = '[^']\+'/\$lifetime = '150'/g" | \
+	sed "s/\$mailer = '[^']\+'/\$mailer = 'smtp'/g" | \
+    sed "s/\$smtpauth = '[^']\+'/\$smtpauth = '0'/g" | \
+    sed "s/\$smtphost = '[^']\+'/\$smtphost = 'mailhog'/g" | \
+    sed "s/\$smtppass = '[^']\+'/\$smtppass = ''/g" | \
+    sed "s/\$smtpport = '[^']\+'/\$smtpport = '1025'/g" | \
+    sed "s/\$smtpsecure = '[^']\+'/\$smtpsecure = 'none'/g" | \
+    sed "s/\$smtpuser = '[^']\+'/\$smtpuser = ''/g" | \
+    > configuration.php
