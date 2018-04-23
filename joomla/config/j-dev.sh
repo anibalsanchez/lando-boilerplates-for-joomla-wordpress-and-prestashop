@@ -19,3 +19,11 @@ cat configuration.php.bak | \
     sed "s/\$smtpuser = '[^']\+'/\$smtpuser = ''/g" \
     > configuration.php
 
+mv plugins/system/adaptiveimagesforjoomla plugins/system/adaptiveimagesforjoomla.disabled 2> /dev/null
+mv plugins/system/admintools plugins/system/admintools.disabled 2> /dev/null
+mv plugins/system/cdnforjoomla plugins/system/cdnforjoomla.disabled 2> /dev/null
+mv plugins/system/jch_optimize plugins/system/jch_optimize.disabled 2> /dev/null
+mv plugins/system/jotcache plugins/system/jotcache.disabled 2> /dev/null
+mv plugins/system/jotmarker plugins/system/jotmarker.disabled 2> /dev/null
+
+echo Configured!
