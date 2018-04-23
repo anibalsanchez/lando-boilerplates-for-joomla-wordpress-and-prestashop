@@ -71,7 +71,7 @@ tooling:
 
 events:
   post-j-install:
-    - appserver: curl -L https://downloads.joomla.org/cms/joomla3/3-8-6/Joomla_3-8-6-Stable-Full_Package.tar.gz | tar zxv -C $LANDO_WEBROOT
+    - appserver: curl -L https://downloads.joomla.org/cms/joomla3/3-8-7/Joomla_3-8-7-Stable-Full_Package.tar.gz | tar zxv -C $LANDO_WEBROOT
 
   post-j-dev:
       - appserver: test -e $LANDO_MOUNT/www/configuration.php && sh $LANDO_MOUNT/config/j-dev.sh
