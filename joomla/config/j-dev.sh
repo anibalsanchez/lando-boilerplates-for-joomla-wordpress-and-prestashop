@@ -11,6 +11,7 @@ cat configuration.php.bak | \
     sed "s/\$force_ssl = '[^']\+'/\$force_ssl = '0'/g" | \
     sed "s/\$gzip = '[^']\+'/\$gzip = '0'/g" | \
     sed "s/\$lifetime = '[^']\+'/\$lifetime = '150'/g" | \
+    sed "s/\$sef = '[^']\+'/\$sef = '0'/g" | \
     sed "s/\$smtpauth = '[^']\+'/\$smtpauth = '0'/g" | \
     sed "s/\$smtphost = '[^']\+'/\$smtphost = 'mailhog'/g" | \
     sed "s/\$smtppass = '[^']\+'/\$smtppass = ''/g" | \
