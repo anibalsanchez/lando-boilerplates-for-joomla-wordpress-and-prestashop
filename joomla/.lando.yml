@@ -10,12 +10,12 @@
 # WORKING WITH JOOMLA - https://docs.devwithlando.io/tutorials/joomla.html
 #
 
-name: joomla_tpl
+name: joocialsite
 recipe: joomla
 
 proxy:
   appserver:
-    - joomla_tpl.lndo.site
+    - joocialsite.lndo.site
   pma:
     - phpmyadmin.lndo.site
   mailhog:
@@ -40,9 +40,9 @@ services:
     type: mysql
     ## portforward: 3306
     creds:
-      user: joomla_tpldb
-      password: joomla_tpldb
-      database: joomla_tpldb
+      user: joocialsitedb
+      password: joocialsitedb
+      database: joocialsitedb
 
   pma:
     type: phpmyadmin
@@ -69,9 +69,20 @@ tooling:
     description: "Apply my default configuration for JDevelopment"
     cmd: echo Configuring my defaults in configuration.php for JDevelopment…
 
+  j-jpa:
+    service: appserver
+    description: "Restore an Akeeba .jpa backup"
+    cmd: echo Restoring Akeeba .jpa backup …
+
 events:
   post-j-install:
     - appserver: curl -L https://downloads.joomla.org/cms/joomla3/3-8-7/Joomla_3-8-7-Stable-Full_Package.tar.gz | tar zxv -C $LANDO_WEBROOT
 
   post-j-dev:
       - appserver: test -e $LANDO_MOUNT/www/configuration.php && sh $LANDO_MOUNT/config/j-dev.sh
+
+  post-j-jpa:
+    - appserver: cd $LANDO_WEBROOT; wget -O kickstart.zip https://www.akeebabackup.com/download/akeeba-kickstart/5-4-2/kickstart-core-5-4-2-zip.zip
+    - appserver: cd $LANDO_WEBROOT; unzip kickstart.zip kickstart.php
+    - appserver: cd $LANDO_WEBROOT; php kickstart.php *.jpa
+    - appserver: cd $LANDO_WEBROOT; rm kickstart.*
