@@ -10,12 +10,12 @@
 # WORKING WITH JOOMLA - https://docs.devwithlando.io/tutorials/joomla.html
 #
 
-name: joocialsite
+name: joomla-tpl
 recipe: joomla
 
 proxy:
   appserver:
-    - joocialsite.lndo.site
+    - joomla-tpl.lndo.site
   pma:
     - phpmyadmin.lndo.site
   mailhog:
@@ -40,9 +40,9 @@ services:
     type: mysql
     ## portforward: 3306
     creds:
-      user: joocialsitedb
-      password: joocialsitedb
-      database: joocialsitedb
+      user: joomla-tpldb
+      password: joomla-tpldb
+      database: joomla-tpldb
 
   pma:
     type: phpmyadmin
