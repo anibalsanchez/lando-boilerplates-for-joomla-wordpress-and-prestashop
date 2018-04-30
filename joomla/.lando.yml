@@ -98,3 +98,5 @@ events:
     - appserver: cp /lando/unite.phar $LANDO_MOUNT/www
     - appserver: cd $LANDO_MOUNT/www; php unite.phar joomla-unite.xml
     - appserver: test -e $LANDO_MOUNT/www/configuration.php && sh $LANDO_MOUNT/config/dev-configuration.sh
+    - appserver: rm $LANDO_MOUNT/www/unite.phar
+    - appserver: rm $LANDO_MOUNT/www/joomla-unite.xml
