@@ -10,12 +10,12 @@
 # WORKING WITH JOOMLA - https://docs.devwithlando.io/tutorials/joomla.html
 #
 
-name: sisanjuan
+name: $replace-with-a-name$
 recipe: joomla
 
 proxy:
   appserver:
-    - sisanjuan.lndo.site
+    - $replace-with-a-name$.lndo.site
   pma:
     - phpmyadmin.lndo.site
   mailhog:
@@ -40,9 +40,9 @@ services:
     type: mysql
     ## portforward: 3306
     creds:
-      user: sisanjuandb
-      password: sisanjuandb
-      database: sisanjuandb
+      user: $replace-with-a-name$db
+      password: $replace-with-a-name$db
+      database: $replace-with-a-name$db
 
   pma:
     type: phpmyadmin
