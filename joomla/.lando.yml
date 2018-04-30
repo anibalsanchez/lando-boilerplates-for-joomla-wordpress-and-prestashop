@@ -10,12 +10,12 @@
 # WORKING WITH JOOMLA - https://docs.devwithlando.io/tutorials/joomla.html
 #
 
-name: joomla-tpl
+name: sisanjuan
 recipe: joomla
 
 proxy:
   appserver:
-    - joomla-tpl.lndo.site
+    - sisanjuan.lndo.site
   pma:
     - phpmyadmin.lndo.site
   mailhog:
@@ -40,9 +40,9 @@ services:
     type: mysql
     ## portforward: 3306
     creds:
-      user: joomla-tpldb
-      password: joomla-tpldb
-      database: joomla-tpldb
+      user: sisanjuandb
+      password: sisanjuandb
+      database: sisanjuandb
 
   pma:
     type: phpmyadmin
@@ -59,30 +59,42 @@ tooling:
     service: database
     description: Drop into a MySQL shell
 
-  j-install:
+  install:
     service: appserver
     description: "Command to install Joomla."
     cmd: echo Installing Joomla ...
 
-  j-dev:
+  dev-config:
     service: appserver
     description: "Apply my default configuration for JDevelopment"
     cmd: echo Configuring my defaults in configuration.php for JDevelopment…
 
-  j-restore:
+  kick-restore:
     service: appserver
     description: "Restore an Akeeba .jpa backup"
     cmd: echo Restoring Akeeba .jpa backup …
 
+  unite-restore:
+    service: appserver
+    description: "Full restore of an Akeeba .jpa backup with Unite"
+    cmd: echo Restoring Akeeba .jpa backup …
+
 events:
-  post-j-install:
+  post-install:
     - appserver: curl -L https://downloads.joomla.org/cms/joomla3/3-8-7/Joomla_3-8-7-Stable-Full_Package.tar.gz | tar zxv -C $LANDO_WEBROOT
 
-  post-j-dev:
-      - appserver: test -e $LANDO_MOUNT/www/configuration.php && sh $LANDO_MOUNT/config/j-dev.sh
+  post-dev-config:
+      - appserver: test -e $LANDO_MOUNT/www/configuration.php && sh $LANDO_MOUNT/config/dev-configuration.sh
 
-  post-j-jpa:
+  post-kick-restore:
     - appserver: cd $LANDO_WEBROOT; wget -O kickstart.zip https://www.akeebabackup.com/download/akeeba-kickstart/5-4-2/kickstart-core-5-4-2-zip.zip
     - appserver: cd $LANDO_WEBROOT; unzip kickstart.zip kickstart.php
     - appserver: cd $LANDO_WEBROOT; php kickstart.php *.jpa
     - appserver: cd $LANDO_WEBROOT; rm kickstart.*
+
+  post-unite-restore:
+    - appserver: test -e $LANDO_MOUNT/config/joomla-unite_tpl.xml && sh $LANDO_MOUNT/config/unite-setup.sh *.jpa $LANDO_APP_NAME $LANDO_WEBROOT
+    - database: test -e $LANDO_MOUNT/www/joomla-unite.tmp && sh $LANDO_MOUNT/config/unite-setup-db.sh $MYSQL_DATABASE $MYSQL_USER $MYSQL_PASSWORD
+    - appserver: cp /lando/unite.phar $LANDO_MOUNT/www
+    - appserver: cd $LANDO_MOUNT/www; php unite.phar joomla-unite.xml
+    - appserver: test -e $LANDO_MOUNT/www/configuration.php && sh $LANDO_MOUNT/config/dev-configuration.sh
