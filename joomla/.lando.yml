@@ -69,7 +69,7 @@ tooling:
     description: "Apply my default configuration for JDevelopment"
     cmd: echo Configuring my defaults in configuration.php for JDevelopment…
 
-  j-jpa:
+  j-restore:
     service: appserver
     description: "Restore an Akeeba .jpa backup"
     cmd: echo Restoring Akeeba .jpa backup …

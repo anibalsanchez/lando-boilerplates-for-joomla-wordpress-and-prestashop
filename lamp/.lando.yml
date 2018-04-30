@@ -76,7 +76,9 @@ services:
       user: lamp_tpldb
       password: lamp_tpldb
       database: lamp_tpldb
-
+    # overrides:
+    #   services:
+    #     image: 'mysql:5.5'
   pma:
     type: phpmyadmin
 
