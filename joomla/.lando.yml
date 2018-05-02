@@ -43,6 +43,9 @@ services:
       user: $replace-with-a-name$db
       password: $replace-with-a-name$db
       database: $replace-with-a-name$db
+    # overrides:
+    #   services:
+    #     image: 'mysql:5.5'
 
   pma:
     type: phpmyadmin
