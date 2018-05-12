@@ -67,6 +67,11 @@ tooling:
     description: "Command to install Joomla."
     cmd: echo Installing Joomla ...
 
+  install-j4:
+    service: appserver
+    description: "Command to install Joomla 4."
+    cmd: echo Installing Joomla 4 ...
+
   dev-config:
     service: appserver
     description: "Apply my default configuration for JDevelopment"
@@ -85,6 +90,9 @@ tooling:
 events:
   post-install:
     - appserver: curl -L https://downloads.joomla.org/cms/joomla3/3-8-7/Joomla_3-8-7-Stable-Full_Package.tar.gz | tar zxv -C $LANDO_WEBROOT
+
+  post-install-j4:
+    - appserver: curl -L https://github.com/joomla/joomla-cms/releases/download/4.0.0-alpha3/Joomla_4.0.0-alpha3-Alpha-Full_Package.tar.gz | tar zxv -C $LANDO_WEBROOT
 
   post-dev-config:
       - appserver: test -e $LANDO_MOUNT/www/configuration.php && sh $LANDO_MOUNT/config/dev-configuration.sh

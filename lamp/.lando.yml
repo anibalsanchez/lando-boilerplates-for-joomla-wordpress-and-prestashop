@@ -33,7 +33,7 @@ services:
       services:
         # A nice http://localhost:8080
         ports: ['8080:80']
-    ## extras:
+    ## run_as_root:
       # - "apt-get -y update"
 
       ## Ubuntu - apt-get install -y php7.0-gd
