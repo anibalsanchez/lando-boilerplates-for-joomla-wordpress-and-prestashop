@@ -57,6 +57,15 @@ services:
       - appserver
 
 tooling:
+  composer:
+    service: appserver
+    description: Run composer commands
+    cmd:
+      - composer
+      - --ansi
+  php:
+    service: appserver
+
   mysql:
     user: root
     service: database
