@@ -37,7 +37,8 @@ services:
       # - "apt-get -y update"
 
       # sudo apt-get install php7.2-xml
-      #
+      # sudo apt-get install php7.2-zip
+      # sudo apt-get install php7.2-curl
 
       ## Ubuntu - apt-get install -y php7.0-gd
       # - "apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng12-dev"
