@@ -3,18 +3,18 @@
 # subpackage  Lando Boilerplate - https://github.com/anibalsanchez/lando-lamp-boilerplate
 #
 # author      Extly, CB.
-# copyright   Copyright (C) 2007 - 2017 Extly, CB. All rights reserved.
-# license     http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
+# copyright   Copyright (C) 2018 Andrea Gentil - Anibal Sanchez <team@extly.com>
+# license     MIT
 # link        http://extly.tech
 #
 # WORKING WITH LAMP - https://docs.devwithlando.io/tutorials/lamp.html
 #
 
-name: lamp_tpl
+name: $replace-with-a-name$
 
 proxy:
   appserver:
-    - lamp_tpl.lndo.site
+    - $replace-with-a-name$.lndo.site
   pma:
     - phpmyadmin.lndo.site
   mailhog:
@@ -78,9 +78,9 @@ services:
     type: mysql
     ## portforward: 3306
     creds:
-      user: lamp_tpldb
-      password: lamp_tpldb
-      database: lamp_tpldb
+      user: $replace-with-a-name$db
+      password: $replace-with-a-name$db
+      database: $replace-with-a-name$db
     # overrides:
     #   services:
     #     image: 'mysql:5.5'

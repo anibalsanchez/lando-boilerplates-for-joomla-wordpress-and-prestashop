@@ -21,15 +21,11 @@ To access the mysql server:
 
     lando mysql
 
-To download and extract Joomla 3 (after the extraction, visit one of the APPSERVER URLS to complete the installation):
+To download and extract (after the extraction, visit one of the APPSERVER URLS to complete the installation):
 
     lando install
 
-To download and extract Joomla 4 (after the extraction, visit one of the APPSERVER URLS to complete the installation):
-
-    lando install-j4
-
-To apply my dev configuration to a J site:
+To apply my development configuration to a site:
 
     lando dev-config
 
@@ -49,4 +45,4 @@ To extract and install an Akeeba backup with [unite](https://www.akeebabackup.co
 ## Copyright
 
 - Copyright (c)2007-2018 Extly, CB. All rights reserved.
-- Distributed under the GNU General Public License version 3 or later
+- Distributed under the MIT license

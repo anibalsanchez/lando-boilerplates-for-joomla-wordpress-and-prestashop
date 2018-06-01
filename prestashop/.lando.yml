@@ -1,0 +1,90 @@
+##
+# package     Extly.VM
+# subpackage  Lando Boilerplate - https://github.com/anibalsanchez/lando-lamp-boilerplate
+#
+# author      Extly, CB.
+# copyright   Copyright (C) 2018 Andrea Gentil - Anibal Sanchez <team@extly.com>
+# license     MIT
+# link        http://extly.tech
+#
+# WORKING WITH LAMP - https://docs.devwithlando.io/tutorials/lamp.html
+#
+
+name: $replace-with-a-name$
+recipe: lamp
+
+proxy:
+  appserver:
+    - $replace-with-a-name$.lndo.site
+  pma:
+    - phpmyadmin.lndo.site
+  mailhog:
+    - mailhog.lndo.site
+
+config:
+  php: '7.1'
+  via: apache
+  webroot: www
+  xdebug: true
+  ssl: true
+
+services:
+  appserver:
+    config:
+      conf: config/php.ini
+    overrides:
+      services:
+        # A nice http://localhost:8080
+        ports: ['8080:80']
+
+  database:
+    type: mysql
+    ## portforward: 3306
+    creds:
+      user: $replace-with-a-name$db
+      password: $replace-with-a-name$db
+      database: $replace-with-a-name$db
+
+  pma:
+    type: phpmyadmin
+
+  mailhog:
+    type: mailhog
+    ## portforward: 1025
+    hogfrom:
+      - appserver
+
+tooling:
+  composer:
+    service: appserver
+    description: Run composer commands
+    cmd:
+      - composer
+      - --ansi
+  php:
+    service: appserver
+
+  mysql:
+    user: root
+    service: database
+    description: Drop into a MySQL shell
+
+  install:
+    service: appserver
+    description: "Command to install PrestaShop."
+    cmd: echo Installing PrestaShop ...
+
+  dev-config:
+    service: appserver
+    description: "Apply my default configuration for PS JDevelopment"
+    cmd: echo Configuring my defaults in configuration.php for PS JDevelopment…
+
+events:
+  # Runs composer install and a custom php script after your app starts
+  ## post-start:
+    ## - appserver: cd $LANDO_MOUNT && composer init
+    ## - appserver: cd $LANDO_WEBROOT && php script.php
+
+  post-install:
+    - appserver: cat $LANDO_WEBROOT/prestashop_1.7.*.zip | tar zxv -C $LANDO_WEBROOT
+    - appserver: php $LANDO_WEBROOT/index_cli.php --domain=$replace-with-a-name$.lndo.site --db_server=database --db_name=$MYSQL_DATABASE --db_user=$MYSQL_USER --db_password=$MYSQL_PASSWORD
