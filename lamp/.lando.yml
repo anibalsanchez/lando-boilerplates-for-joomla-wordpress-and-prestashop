@@ -11,6 +11,7 @@
 #
 
 name: $replace-with-a-name$
+recipe: lamp
 
 proxy:
   appserver:
