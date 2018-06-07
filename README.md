@@ -1,15 +1,19 @@
-
 # Lando Boilerplates
 
 Recipes for Lando - Docker containers. Tested with Joomla, WordPress, PrestaShop, Laravel, Symphony, etc.
 
-**Mise en place**: Clone this repository and create a destination folder for your new local development site.
+**Mise en place**: Clone this repository and create a _destination folder_ for your new local development site. Choose which CMS you want to install and copy all files to the _destination folder_ (remember to also copy the hidden `.lando.yml`). Follow the next steps.
 
 ## Joomla Template
 
 ### Step 1 - Review and Customize the Recipe
 
-Remember to replace the **$replace-with-a-name$**.
+Open the `.lando.yml` and replace the **$replace-with-a-name$** with the **name** of your local development site.
+
+The recipe is going to create:
+
+- A site with the **name**
+- A database withe user **namedb**, password **namedb** and schema **namedb**.
 
 ### Step 2 - Review and Customize the Recipe
 
@@ -43,8 +47,7 @@ To extract and install an Akeeba backup with [unite](https://www.akeebabackup.co
 
 ### WordPress Template
 
-
 ## Copyright
 
-- Copyright (c)2007-2018 Extly, CB. All rights reserved.
-- Distributed under the MIT license
+* Copyright (c)2007-2018 Extly, CB. All rights reserved.
+* Distributed under the MIT license
