@@ -10,7 +10,7 @@ In my practice, I have configured the recipes to have the following services:
 - phpMyAdmin, to handle the administration of MySQL
 - MailHog, to handle SMTP testing of mails
 
-**Mise en place**: Clone this repository and create a _destination folder_ for your new local development site. Choose which CMS you want to install and copy all files to the _destination folder_ (remember to also copy the hidden `.lando.yml`). Follow the next steps.
+**Mise en place**: Clone this repository and create a destination folder `mydevsite` for your new local development site. Choose which CMS you want to install and copy all files to the destination folder `mydevsite` (remember to also copy the hidden `.lando.yml`). Follow the next steps.
 
 ## Joomla Template
 
