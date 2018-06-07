@@ -8,12 +8,18 @@ Recipes for Lando - Docker containers. Tested with Joomla, WordPress, PrestaShop
 
 ### Step 1 - Review and Customize the Recipe
 
-Open the `.lando.yml` and replace the **$replace-with-a-name$** (including the $) with the **name** of your local development site.
+Open the `.lando.yml` and replace the **$replace-with-a-name$** (including the $) with the **myname** of your local development site.
 
 The recipe is going to create:
 
-- A site with the **name**
-- A database withe user **namedb**, password **namedb** and schema **namedb**.
+- A site with the **myname**
+
+A database with these connection settings:
+
+- Host Name: database
+- User **mynamedb**
+- Password **mynamedb**
+- Database: **mynamedb**
 
 ### Step 2 - Review and Customize the Recipe
 
@@ -21,13 +27,40 @@ To start the Docker container:
 
     lando start
 
+After starting the container, you will receive a command line output like this one:
+
+    BOOMSHAKALAKA!!!
+
+    Your app has started up correctly.
+    Here are some vitals:
+
+    NAME            myname
+    LOCATION        /home/myuser/mysites/mydevsite
+    SERVICES        appserver, database, pma, mailhog
+
+    APPSERVER URLS  https://localhost:32775
+                    http://localhost:8080
+                    http://localhost:32774
+                    http://myname.lndo.site
+                    https://myname.lndo.site
+
+    PMA URLS        http://localhost:32769
+                    http://phpmyadmin.lndo.site
+                    https://phpmyadmin.lndo.site
+
+    MAILHOG URLS    http://localhost:32773
+                    http://mailhog.lndo.site
+                    https://mailhog.lndo.site
+
+Great! The site is ready, and available on APPSERVER URLS, there is also a phpmyadmin and a mailhog.
+
 To stop the Docker container:
 
     lando stop
 
 To restart the Docker container:
 
-    lando stop
+    lando restart
 
 To rebuild the Docker container:
 
@@ -37,15 +70,17 @@ To destroy the Docker container (destroy for ever):
 
     lando destroy
 
-### Step 3 - Optional Commands
-
 To access the mysql server:
 
     lando mysql
 
-To download and extract (after the extraction, visit one of the APPSERVER URLS to complete the installation):
+### Step 3 - Optional commands for Joomla
+
+To download the latest [Joomla](https://www.joomla.org) zip file and extract it to the _www_ folder:
 
     lando install
+
+ After extraction, visit one of the APPSERVER URLS to complete the installation. For example: http://localhost:8080.
 
 To apply my development configuration to a site:
 
