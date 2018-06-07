@@ -3,6 +3,8 @@
 
 Recipes for Lando - Docker containers. Tested with Joomla, WordPress, PrestaShop, Laravel, Symphony, etc.
 
+**Mise en place**: Clone this repository and create a destination folder for your new local development site.
+
 ## Joomla Template
 
 ### Step 1 - Review and Customize the Recipe
