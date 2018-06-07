@@ -1,4 +1,4 @@
-# Lando Boilerplates for Joomla, WordPress, PrestaShop
+# Lando Boilerplates for Joomla, WordPress and PrestaShop
 
 Recipes for [Lando](https://docs.devwithlando.io/) - Docker containers. Tested with Joomla, WordPress, PrestaShop, etc.
 
