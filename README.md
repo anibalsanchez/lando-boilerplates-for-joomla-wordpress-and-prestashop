@@ -4,7 +4,7 @@ Recipes for [Lando](https://docs.devwithlando.io/) - Docker containers. Tested w
 
 These Recipes configure a local development site based on Lando and Docker with the most common tools for Lamp and CMS development. It is based on [Lando](https://docs.devwithlando.io/) and Docker. So, all the available tooling can also be applied to these recipes.
 
-For a general introduction: [Devops with Lando and Docker](https://extly.tech/media/devops-with-lando-and-docker/index.html#/), By Anibal Sanchez, Extly.Tech. Ubucon Europe - Xixón, Spain - 27-29th of April 2018. Slides: [joo.nu/devops](http://joo.nu/devops)
+>>>> For a general introduction: [Devops with Lando and Docker](https://extly.tech/media/devops-with-lando-and-docker/index.html#/), By Anibal Sanchez, Extly.Tech. Ubucon Europe - Xixón, Spain - 27-29th of April 2018. Slides: [joo.nu/devops](http://joo.nu/devops)
 
 In my practice, I have configured the recipes to have the following services:
 
