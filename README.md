@@ -23,7 +23,7 @@ A database with these connection settings:
 
 ### Step 2 - Review and Customize the Recipe
 
-To start the Docker container:
+- To start the Docker container:
 
     lando start
 
@@ -54,43 +54,45 @@ After starting the container, you will receive a command line output like this o
 
 Great! The site is ready, and available on APPSERVER URLS, there is also a phpmyadmin and a mailhog.
 
-To stop the Docker container:
+- To stop the Docker container:
 
     lando stop
 
-To restart the Docker container:
+- To restart the Docker container:
 
     lando restart
 
-To rebuild the Docker container:
+- To rebuild the Docker container:
 
     lando rebuild
 
-To destroy the Docker container (destroy for ever):
+- To destroy the Docker container (destroy for ever):
 
     lando destroy
 
-To access the mysql server:
+- To access the mysql server:
 
     lando mysql
 
 ### Step 3 - Optional commands for Joomla
 
-To download the latest [Joomla](https://www.joomla.org) zip file and extract it to the _www_ folder:
+- To download the latest [Joomla](https://www.joomla.org) zip file and extract it to the _www_ folder:
 
     lando install
 
  After extraction, visit one of the APPSERVER URLS to complete the installation. For example: http://localhost:8080.
 
-To apply my development configuration to a site:
+- To apply my development configuration to a site:
 
     lando dev-config
 
-To download and extract an Akeeba backup with [kickstart](https://www.akeebabackup.com/products/akeeba-kickstart.html):
+- To download and extract an Akeeba backup with [kickstart](https://www.akeebabackup.com/products/akeeba-kickstart.html):
 
     lando kick-restore
 
-To extract and install an Akeeba backup with [unite](https://www.akeebabackup.com/products/akeeba-unite.html):
+After the extraction, visit the site to complete the installation. For instance: http://localhost:8080/k.php
+
+- To extract and install an Akeeba backup with [unite](https://www.akeebabackup.com/products/akeeba-unite.html):
 
     lando unite-restore
 
