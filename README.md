@@ -21,6 +21,22 @@ To start the Docker container:
 
     lando start
 
+To stop the Docker container:
+
+    lando stop
+
+To restart the Docker container:
+
+    lando stop
+
+To rebuild the Docker container:
+
+    lando rebuild
+
+To destroy the Docker container (destroy for ever):
+
+    lando destroy
+
 ### Step 3 - Optional Commands
 
 To access the mysql server:
