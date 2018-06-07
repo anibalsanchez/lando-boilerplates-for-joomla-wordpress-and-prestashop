@@ -8,7 +8,7 @@ Recipes for Lando - Docker containers. Tested with Joomla, WordPress, PrestaShop
 
 ### Step 1 - Review and Customize the Recipe
 
-Open the `.lando.yml` and replace the **$replace-with-a-name$** with the **name** of your local development site.
+Open the `.lando.yml` and replace the **$replace-with-a-name$** (including the $) with the **name** of your local development site.
 
 The recipe is going to create:
 
@@ -21,7 +21,7 @@ To start the Docker container:
 
     lando start
 
-### Step 3 - Optional - Available Commands
+### Step 3 - Optional Commands
 
 To access the mysql server:
 
