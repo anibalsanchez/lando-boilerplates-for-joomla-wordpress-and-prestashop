@@ -72,7 +72,7 @@ tooling:
   install:
     service: appserver
     description: "Command to install PrestaShop."
-    cmd: echo Installing PrestaShop ...
+    cmd: echo Installing PrestaShop ...(email: pub@prestashop.com password: 0123456789)
 
   dev-config:
     service: appserver
@@ -89,3 +89,4 @@ events:
     - appserver: cd $LANDO_WEBROOT; unzip prestashop_1.7.*.zip; rm prestashop_1.7.*.zip
     - appserver: cd $LANDO_WEBROOT; unzip -o prestashop.zip; rm prestashop.zip
     - appserver: cd $LANDO_WEBROOT; php install/index_cli.php -- --domain=$replace-with-a-name$.lndo.site --db_server=database --db_name=$MYSQL_DATABASE --db_user=$MYSQL_USER --db_password=$MYSQL_PASSWORD
+    - appserver: cd $LANDO_WEBROOT; rm -rf install
