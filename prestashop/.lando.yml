@@ -76,8 +76,8 @@ tooling:
 
   dev-config:
     service: appserver
-    description: "Apply my default configuration for PS JDevelopment"
-    cmd: echo Configuring my defaults in configuration.php for PS JDevelopment…
+    description: "Apply my default configuration for PS Development"
+    cmd: echo Configuring my defaults in configuration.php for PS Development…
 
 events:
   # Runs composer install and a custom php script after your app starts
@@ -86,5 +86,6 @@ events:
     ## - appserver: cd $LANDO_WEBROOT && php script.php
 
   post-install:
-    - appserver: cat $LANDO_WEBROOT/prestashop_1.7.*.zip | tar zxv -C $LANDO_WEBROOT
-    - appserver: php $LANDO_WEBROOT/index_cli.php --domain=$replace-with-a-name$.lndo.site --db_server=database --db_name=$MYSQL_DATABASE --db_user=$MYSQL_USER --db_password=$MYSQL_PASSWORD
+    - appserver: cd $LANDO_WEBROOT; unzip prestashop_1.7.*.zip; rm prestashop_1.7.*.zip
+    - appserver: cd $LANDO_WEBROOT; unzip -o prestashop.zip; rm prestashop.zip
+    - appserver: cd $LANDO_WEBROOT; php install/index_cli.php -- --domain=$replace-with-a-name$.lndo.site --db_server=database --db_name=$MYSQL_DATABASE --db_user=$MYSQL_USER --db_password=$MYSQL_PASSWORD
