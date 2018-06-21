@@ -72,7 +72,7 @@ tooling:
   install:
     service: appserver
     description: "Command to install PrestaShop."
-    cmd: echo Installing PrestaShop ...(email: pub@prestashop.com password: 0123456789)
+    cmd: echo Installing PrestaShop ... (email pub@prestashop.com - password 0123456789)
 
   dev-config:
     service: appserver
