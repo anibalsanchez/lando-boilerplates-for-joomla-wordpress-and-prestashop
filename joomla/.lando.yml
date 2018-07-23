@@ -101,7 +101,7 @@ events:
     - appserver: curl -L https://downloads.joomla.org/cms/joomla3/3-8-8/Joomla_3-8-8-Stable-Full_Package.tar.gz | tar zxv -C $LANDO_WEBROOT
 
   post-install-j4:
-    - appserver: curl -L https://github.com/joomla/joomla-cms/releases/download/4.0.0-alpha3/Joomla_4.0.0-alpha3-Alpha-Full_Package.tar.gz | tar zxv -C $LANDO_WEBROOT
+    - appserver: curl -L https://github.com/joomla/joomla-cms/releases/download/4.0.0-alpha4/Joomla_4.0.0-alpha4-Alpha-Full_Package.tar.gz | tar zxv -C $LANDO_WEBROOT
 
   post-dev-config:
       - appserver: test -e $LANDO_MOUNT/www/configuration.php && sh $LANDO_MOUNT/config/dev-configuration.sh
