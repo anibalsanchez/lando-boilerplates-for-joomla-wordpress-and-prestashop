@@ -116,7 +116,9 @@ After the installation, remember to execute `lando dev-config`, to apply the bes
 
 - To intall an extension
 
-    `lando install-extension ..../my-extension.zip`
+    `lando install-extension`
+
+The extension must be copied into the tmp/ folder and named "the-extension.zip".
 
 - To intall the *Patch Tester* for the Joomla, Pizza, Bugs and Fun session.
 
