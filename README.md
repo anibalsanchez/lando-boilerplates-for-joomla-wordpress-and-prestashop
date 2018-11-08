@@ -112,6 +112,16 @@ After the installation, remember to execute `lando dev-config`, to apply the bes
 
 After the installation, remember to execute `lando dev-config`, to apply the best practices.
 
+### Step 4 - Optional commands for Joomla - JMAD18 SPECIAL EDITION
+
+- To intall an extension
+
+    `lando install-extension ..../my-extension.zip`
+
+- To intall the *Patch Tester* for the Joomla, Pizza, Bugs and Fun session.
+
+    `lando install-patchtester`
+
 ### LAMP Recipe
 
 ### PrestaShop Recipe

@@ -76,10 +76,20 @@ tooling:
     description: "Command to install Joomla."
     cmd: echo Installing Joomla ...
 
+  install-extension:
+    service: appserver
+    description: "Command to install an extension (Thanks to Akeeba https://github.com/akeeba/vagrant/blob/master/assets/joomla/install-joomla-extension.php)."
+    cmd: echo Installing the extension ...
+
   install-j4:
     service: appserver
     description: "Command to install Joomla 4."
     cmd: echo Installing Joomla 4 ...
+
+  install-patchtester:
+    service: appserver
+    description: "Command to install the Joomla Patch Tester."
+    cmd: echo Installing the Patch Tester ...
 
   dev-config:
     service: appserver
@@ -100,8 +110,15 @@ events:
   post-install:
     - appserver: curl -L https://downloads.joomla.org/cms/joomla3/3-9-0/joomla_3-9-0-stable-full_package-tar-gz?format=gz | tar zxv -C $LANDO_WEBROOT
 
+  post-install-extension:
+    - appserver: php $LANDO_MOUNT/config/install-joomla-extension.php $1
+
   post-install-j4:
     - appserver: curl -L https://github.com/joomla/joomla-cms/releases/download/4.0.0-alpha5/Joomla_4.0.0-alpha5-Alpha-Full_Package.tar.gz | tar zxv -C $LANDO_WEBROOT
+
+  post-install-patchtester:
+    - appserver: curl -L https://github.com/joomla-extensions/patchtester/releases/download/3.0.0-beta4/com_patchtester.tar.gz
+    - appserver: php $LANDO_MOUNT/config/install-joomla-extension.php com_patchtester.tar.gz
 
   post-dev-config:
       - appserver: test -e $LANDO_MOUNT/www/configuration.php && sh $LANDO_MOUNT/config/dev-configuration.sh
