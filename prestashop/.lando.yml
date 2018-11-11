@@ -22,7 +22,7 @@ proxy:
     - mailhog.lndo.site
 
 config:
-  php: '7.1'
+  php: '7.2'
   via: apache
   webroot: www
   xdebug: true
