@@ -35,7 +35,7 @@ A database with these connection settings:
 
 - To start the Docker container:
 
-    lando start
+    `lando start`
 
 After starting the container, you will receive a command line output like this one:
 
@@ -66,41 +66,41 @@ Great! The site is ready, and available on APPSERVER URLS, there is also a phpmy
 
 - To stop the Docker container:
 
-    lando stop
+    `lando stop`
 
 - To restart the Docker container:
 
-   lando restart
+   `lando restart`
 
 - To rebuild the Docker container:
 
-    lando rebuild
+    `lando rebuild`
 
 - To destroy the Docker container (destroy for ever):
 
-    lando destroy
+    `lando destroy`
 
 - To access the mysql server:
 
-    lando mysql
+    `lando mysql`
 
 ### Step 3 - Optional commands for Joomla
 
 - To download the latest [Joomla](https://www.joomla.org) zip file and extract it to the _www_ folder:
 
-    lando install
+    `lando install`
 
  After extraction, visit one of the APPSERVER URLS to complete the installation. For example: http://localhost:8080.
 
 - To apply my development configuration to a site:
 
-    lando dev-config
+    `lando dev-config`
 
 This is handy script to disable security plugins, CDNs, disable cache, configure the MailHog, etc.
 
 - To download and extract an Akeeba backup with [kickstart](https://www.akeebabackup.com/products/akeeba-kickstart.html):
 
-    lando kick-restore
+    `lando kick-restore`
 
 After the extraction, visit the site to complete the installation. For instance: http://localhost:8080/k.php.
 
@@ -108,7 +108,7 @@ After the installation, remember to execute `lando dev-config`, to apply the bes
 
 - To extract and install an Akeeba backup with [unite](https://www.akeebabackup.com/products/akeeba-unite.html):
 
-    lando unite-restore
+    `lando unite-restore`
 
 After the installation, remember to execute `lando dev-config`, to apply the best practices.
 
@@ -116,13 +116,13 @@ After the installation, remember to execute `lando dev-config`, to apply the bes
 
 - To intall an extension
 
-    lando install-extension
+    `lando install-extension`
 
 The extension must be copied into the tmp/ folder and named "the-extension.zip".
 
 - To intall the *Patch Tester* for the Joomla, Pizza, Bugs and Fun session.
 
-    lando install-patchtester
+    `lando install-patchtester`
 
 ### WordPress Recipe
 
@@ -145,7 +145,7 @@ A database with these connection settings:
 
 - To start the Docker container:
 
-    lando start
+    `lando start`
 
 After starting the container, you will receive a command line output like this one:
 
@@ -176,23 +176,23 @@ Great! The site is ready, and available on APPSERVER URLS, there is also a phpmy
 
 - To stop the Docker container:
 
-    lando stop
+    `lando stop`
 
 - To restart the Docker container:
 
-   lando restart
+   `lando restart`
 
 - To rebuild the Docker container:
 
-    lando rebuild
+    `lando rebuild`
 
 - To destroy the Docker container (destroy for ever):
 
-    lando destroy
+    `lando destroy`
 
 - To access the mysql server:
 
-    lando mysql
+    `lando mysql`
 
 ### Step 3 - Optional commands for WordPress
 
