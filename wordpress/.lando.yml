@@ -24,6 +24,7 @@ proxy:
 config:
   php: '7.2'
   via: apache
+  ssl: true
   webroot: www
   xdebug: true
 
