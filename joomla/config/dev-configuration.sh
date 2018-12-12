@@ -2,7 +2,7 @@
 
 cd /app/www
 
-cp configuration.php configuration.php.bak
+cp -f configuration.php configuration.php.bak
 
 cat configuration.php.bak | \
 	sed "s/\$mailer = '[^']\+'/\$mailer = 'smtp'/g" | \
@@ -18,7 +18,9 @@ cat configuration.php.bak | \
     sed "s/\$smtpport = '[^']\+'/\$smtpport = '1025'/g" | \
     sed "s/\$smtpsecure = '[^']\+'/\$smtpsecure = 'none'/g" | \
     sed "s/\$smtpuser = '[^']\+'/\$smtpuser = ''/g" \
-    > configuration.php
+    > configuration.php.new
+cp -f configuration.php.new configuration.php
+rm configuration.php.new
 
 mv plugins/system/adaptiveimagesforjoomla plugins/system/adaptiveimagesforjoomla.disabled 2> /dev/null
 mv plugins/system/admintools plugins/system/admintools.disabled 2> /dev/null
