@@ -109,7 +109,7 @@ tooling:
 
 events:
   post-install:
-    - appserver: curl -L https://downloads.joomla.org/cms/joomla3/3-9-0/joomla_3-9-0-stable-full_package-tar-gz?format=gz | tar zxv -C $LANDO_WEBROOT
+    - appserver: curl -L https://downloads.joomla.org/cms/joomla3/3-9-1/joomla_3-9-1-stable-full_package-tar-gz?format=gz | tar zxv -C $LANDO_WEBROOT
 
   post-install-extension:
     - appserver: cp $LANDO_MOUNT/config/install-joomla-extension.php $LANDO_WEBROOT/cli
@@ -117,7 +117,7 @@ events:
     - appserver: rm $LANDO_WEBROOT/cli/install-joomla-extension.php
 
   post-install-j4:
-    - appserver: curl -L https://github.com/joomla/joomla-cms/releases/download/4.0.0-alpha5/Joomla_4.0.0-alpha5-Alpha-Full_Package.tar.gz | tar zxv -C $LANDO_WEBROOT
+    - appserver: curl -L https://github.com/joomla/joomla-cms/releases/download/4.0.0-alpha6/Joomla_4.0.0-alpha6-Alpha-Full_Package.tar.gz | tar zxv -C $LANDO_WEBROOT
 
   post-install-patchtester:
     - appserver: curl -L https://github.com/joomla-extensions/patchtester/releases/download/3.0.0-beta4/com_patchtester.tar.gz > $LANDO_MOUNT/www/tmp/com_patchtester.tar.gz
