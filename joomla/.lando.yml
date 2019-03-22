@@ -37,6 +37,14 @@ services:
         # A nice http://localhost:8080
         ports: ['8080:80']
 
+  ## Required only for SobiPro ... a templating system based on XML/XSLT ...
+  ##   Uncomment this and run "lando rebuild"
+  ##
+  #  run_as_root:
+  #    - "apt-get -y update"
+  #    - "apt-get install -y libxml2-dev libxslt-dev"
+  #    - "docker-php-ext-install dom xmlrpc xsl"
+
   database:
     type: mysql
     ## portforward: 3306
@@ -109,7 +117,7 @@ tooling:
 
 events:
   post-install:
-    - appserver: curl -L https://downloads.joomla.org/cms/joomla3/3-9-1/joomla_3-9-1-stable-full_package-tar-gz?format=gz | tar zxv -C $LANDO_WEBROOT
+    - appserver: curl -L https://downloads.joomla.org/cms/joomla3/3-9-4/joomla_3-9-4-stable-full_package-tar-gz?format=gz | tar zxv -C $LANDO_WEBROOT
 
   post-install-extension:
     - appserver: cp $LANDO_MOUNT/config/install-joomla-extension.php $LANDO_WEBROOT/cli
