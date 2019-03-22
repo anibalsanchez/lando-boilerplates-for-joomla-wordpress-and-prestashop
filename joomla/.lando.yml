@@ -37,13 +37,13 @@ services:
         # A nice http://localhost:8080
         ports: ['8080:80']
 
-  ## Required only for SobiPro ... a templating system based on XML/XSLT ...
-  ##   Uncomment this and run "lando rebuild", and then "lando restart"
-  ##
-  #  run_as_root:
-  #    - "apt-get -y update"
-  #    - "apt-get install -y libxml2-dev libxslt-dev"
-  #    - "docker-php-ext-install dom xmlrpc xsl"
+## Required only for SobiPro ... a templating system based on XML/XSLT ...
+##   Uncomment this and run "lando rebuild", and then "lando restart"
+##
+    # run_as_root:
+    #   - "apt-get -y update"
+    #   - "apt-get install -y libxml2-dev libxslt-dev"
+    #   - "docker-php-ext-install dom xmlrpc xsl"
 
   database:
     type: mysql
