@@ -38,7 +38,7 @@ services:
         ports: ['8080:80']
 
   ## Required only for SobiPro ... a templating system based on XML/XSLT ...
-  ##   Uncomment this and run "lando rebuild"
+  ##   Uncomment this and run "lando rebuild", and then "lando restart"
   ##
   #  run_as_root:
   #    - "apt-get -y update"
