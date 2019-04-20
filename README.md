@@ -1,6 +1,8 @@
-# Lando Boilerplates for Joomla, WordPress and PrestaShop
+# Lando 3.0.0 RC1 Boilerplates for Joomla, WordPress and PrestaShop
 
 Recipes for [Lando](https://docs.devwithlando.io/) - Docker containers. Tested with Joomla, WordPress, PrestaShop, etc.
+
+This recipes are only valid for Lando releases previous to 3.0.0 RC2. Please use [Lando 3.0.0 RC1](https://github.com/lando/lando/releases/tag/v3.0.0-rc.1) tops if you want to use them or help us update them to latest releases.
 
 These Recipes configure a local development site based on Lando and Docker with the most common tools for Lamp and CMS development. It is based on [Lando](https://docs.devwithlando.io/) and Docker. So, all the available tooling can also be applied to these recipes.
 
