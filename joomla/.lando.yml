@@ -117,7 +117,7 @@ tooling:
 
 events:
   post-install:
-    - appserver: curl -L https://downloads.joomla.org/cms/joomla3/3-9-4/joomla_3-9-4-stable-full_package-tar-gz?format=gz | tar zxv -C $LANDO_WEBROOT
+    - appserver: curl -L https://downloads.joomla.org/cms/joomla3/3-9-5/joomla_3-9-5-stable-full_package-tar-gz?format=gz | tar zxv -C $LANDO_WEBROOT
 
   post-install-extension:
     - appserver: cp $LANDO_MOUNT/config/install-joomla-extension.php $LANDO_WEBROOT/cli
@@ -125,7 +125,7 @@ events:
     - appserver: rm $LANDO_WEBROOT/cli/install-joomla-extension.php
 
   post-install-j4:
-    - appserver: curl -L https://github.com/joomla/joomla-cms/releases/download/4.0.0-alpha7/Joomla_4.0.0-alpha7-Alpha-Full_Package.tar.gz | tar zxv -C $LANDO_WEBROOT
+    - appserver: curl -L https://github.com/joomla/joomla-cms/releases/download/4.0.0-alpha8/Joomla_4.0.0-alpha8-Alpha-Full_Package.tar.gz | tar zxv -C $LANDO_WEBROOT
 
   post-install-patchtester:
     - appserver: curl -L https://github.com/joomla-extensions/patchtester/releases/download/3.0.0-beta4/com_patchtester.tar.gz > $LANDO_MOUNT/www/tmp/com_patchtester.tar.gz
@@ -137,7 +137,7 @@ events:
       - appserver: test -e $LANDO_MOUNT/www/configuration.php && sh $LANDO_MOUNT/config/dev-configuration.sh
 
   post-kick-restore:
-    - appserver: cd $LANDO_WEBROOT; wget -O kickstart.zip https://www.akeebabackup.com/download/akeeba-kickstart/6-0-0/kickstart-core-6-0-0-zip.zip
+    - appserver: cd $LANDO_WEBROOT; wget -O kickstart.zip https://www.akeebabackup.com/download/akeeba-kickstart/6-0-1/kickstart-core-6-0-1-zip.zip
     - appserver: cd $LANDO_WEBROOT; unzip kickstart.zip kickstart.php
     - appserver: cd $LANDO_WEBROOT; php kickstart.php *.jpa
     - appserver: cd $LANDO_WEBROOT; rm kickstart.*
