@@ -1,8 +1,8 @@
-# Lando 3.0.0 RC1 Boilerplates for Joomla, WordPress and PrestaShop
+# Lando Boilerplates for Joomla, WordPress and PrestaShop
+
+**REQUIREMENTS**: Lando 3.0.0-RC.2+ - Tested on 3.0.0-RC.17. Download the latest Lando release from: <https://github.com/lando/lando/releases>.
 
 Recipes for [Lando](https://docs.devwithlando.io/) - Docker containers. Tested with Joomla, WordPress, PrestaShop, etc.
-
-This recipes are only valid for Lando releases previous to 3.0.0 RC2. Please use [Lando 3.0.0 RC1](https://github.com/lando/lando/releases/tag/v3.0.0-rc.1) tops if you want to use them or help us update them to latest releases.
 
 These Recipes configure a local development site based on Lando and Docker with the most common tools for Lamp and CMS development. It is based on [Lando](https://docs.devwithlando.io/) and Docker. So, all the available tooling can also be applied to these recipes.
 
@@ -14,7 +14,9 @@ In my practice, I have configured the recipes to have the following services:
 - phpMyAdmin, to handle the administration of MySQL
 - MailHog, to handle SMTP testing of mails
 
-**Mise en place**: Clone this repository and create a destination folder `mydevsite` for your new local development site. Choose which CMS you want to install and copy all files to the destination folder `mydevsite` (remember to also copy the hidden `.lando.yml`). Follow the next steps.
+## How to Start
+
+- Choose which CMS you want to install and copy only those files into the destination folder `mydevsite` (remember to also copy the hidden `.lando.yml`). Follow the next steps.
 
 ## Joomla Recipe
 
@@ -208,5 +210,5 @@ To install [WordPress](https://wordpress.org/), you can download the latest Word
 
 ## Copyright & License
 
-- Copyright (c)2007-2018 Extly, CB. All rights reserved.
+- Copyright (c)2007-2019 Extly, CB. All rights reserved.
 - Distributed under the MIT license
