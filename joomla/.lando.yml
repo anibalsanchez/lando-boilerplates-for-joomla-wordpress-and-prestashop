@@ -10,6 +10,8 @@
 # WORKING WITH JOOMLA - https://docs.devwithlando.io/tutorials/joomla.html
 #
 
+# REQUIREMENTS: Lando 3.0.0-RC.2+ - Tested on 3.0.0-RC.17
+
 name: $replace-with-a-name$
 recipe: joomla
 
@@ -24,130 +26,107 @@ proxy:
 config:
   php: '7.2'
   via: apache
-  ssl: true
   webroot: www
   xdebug: true
+  config:
+    php: config/php.ini
 
 services:
   appserver:
-    config:
-      conf: config/php.ini
-    overrides:
-      services:
-        # A nice http://localhost:8080
-        ports: ['8080:80']
-
-## Required only for SobiPro ... a templating system based on XML/XSLT ...
-##   Uncomment this and run "lando rebuild", and then "lando restart"
-##
-    # run_as_root:
-    #   - "apt-get -y update"
-    #   - "apt-get install -y libxml2-dev libxslt-dev"
-    #   - "docker-php-ext-install dom xmlrpc xsl"
+    ports:
+      # A nice http://localhost:8080
+      - '8080:80'
 
   database:
     type: mysql
-    ## portforward: 3306
+    portforward: 3306
     creds:
       user: $replace-with-a-name$db
       password: $replace-with-a-name$db
       database: $replace-with-a-name$db
-    # overrides:
-    #   services:
-    #     image: 'mysql:5.5'
 
   pma:
     type: phpmyadmin
 
   mailhog:
     type: mailhog
-    ## portforward: 1025
+    portforward: 1025
     hogfrom:
       - appserver
 
 tooling:
-  composer:
-    service: appserver
-    description: Run composer commands
-    cmd:
-      - composer
-      - --ansi
-  php:
-    service: appserver
 
-  mysql:
-    user: root
-    service: database
-    description: Drop into a MySQL shell
+  # Tooling Example
+  # https://github.com/lando/lando/tree/master/examples/tooling
+
+  # USING SCRIPTY THINGS
+  # https://docs.devwithlando.io/config/services.html#using-scripty-things
 
   install:
     service: appserver
-    description: "Command to install Joomla."
-    cmd: echo Installing Joomla ...
-
-  install-extension:
-    service: appserver
-    description: "Command to install an extension (Thanks to Akeeba https://github.com/akeeba/vagrant/blob/master/assets/joomla/install-joomla-extension.php)."
-    cmd: echo Installing the extension ...
+    description: "Command to install Joomla 3."
+    cmd:
+      - echo Installing Joomla ...
+      - curl -L https://downloads.joomla.org/cms/joomla3/3-9-8/Joomla_3-9-8-Stable-Full_Package.tar.gz?format=gz |
+        tar zxv -C $LANDO_WEBROOT
 
   install-j4:
     service: appserver
     description: "Command to install Joomla 4."
-    cmd: echo Installing Joomla 4 ...
+    cmd:
+      - echo Installing Joomla 4 ...
+      - curl -L https://github.com/joomla/joomla-cms/releases/download/4.0.0-alpha9/Joomla_4.0.0-alpha9-Alpha-Full_Package.tar.gz |
+        tar zxv -C $LANDO_WEBROOT
+
+  install-extension:
+    service: appserver
+    description: "Command to install an extension (Thanks to Akeeba https://github.com/akeeba/vagrant/blob/master/assets/joomla/install-joomla-extension.php)."
+    cmd:
+      - echo Installing the extension ...
+      - cp $LANDO_MOUNT/config/install-joomla-extension.php $LANDO_WEBROOT/cli &&
+        php $LANDO_WEBROOT/cli/install-joomla-extension.php --package="$LANDO_MOUNT/www/tmp/the-extension.gz" 2>/dev/null &&
+        rm $LANDO_WEBROOT/cli/install-joomla-extension.php
 
   install-patchtester:
     service: appserver
     description: "Command to install the Joomla Patch Tester."
-    cmd: echo Installing the Patch Tester ...
+    cmd:
+      - echo Installing the Patch Tester ...
+      - curl -L https://github.com/joomla-extensions/patchtester/releases/download/3.0.0-beta4/com_patchtester.tar.gz > "$LANDO_WEBROOT/tmp/com_patchtester.tar.gz"
+      - cp "$LANDO_MOUNT/config/install-joomla-extension.php" "$LANDO_WEBROOT/cli" &&
+        php "$LANDO_WEBROOT/cli/install-joomla-extension.php" --package="$LANDO_WEBROOT/tmp/com_patchtester.tar.gz" 2>/dev/null &&
+        rm "$LANDO_WEBROOT/cli/install-joomla-extension.php"
 
   dev-config:
     service: appserver
     description: "Apply my default configuration for JDevelopment"
-    cmd: echo Configuring my defaults in configuration.php for JDevelopment…
+    cmd:
+      - echo Configuring my defaults in configuration.php for JDevelopment…
+      - test -e $LANDO_MOUNT/www/configuration.php &&
+        sh $LANDO_MOUNT/config/dev-configuration.sh
 
   kick-restore:
     service: appserver
-    description: "Restore an Akeeba .jpa backup"
-    cmd: echo Restoring Akeeba .jpa backup …
+    description: "Restore an Akeeba .jpa backup with Kickstart"
+    cmd:
+      - echo Restoring Akeeba .jpa backup …
+      - cd $LANDO_WEBROOT &&
+        wget -O kickstart-core-6-0-1-zip.zip "https://www.akeebabackup.com/download/akeeba-kickstart/6-0-1/kickstart-core-6-0-1-zip.zip" &&
+        unzip kickstart-core-6-0-1-zip.zip kickstart.php &&
+        php kickstart.php *.jpa &&
+        rm kickstart.*
 
   unite-restore:
     service: appserver
     description: "Full restore of an Akeeba .jpa backup with Unite"
-    cmd: echo Restoring Akeeba .jpa backup …
-
-events:
-  post-install:
-    - appserver: curl -L https://downloads.joomla.org/cms/joomla3/3-9-5/joomla_3-9-5-stable-full_package-tar-gz?format=gz | tar zxv -C $LANDO_WEBROOT
-
-  post-install-extension:
-    - appserver: cp $LANDO_MOUNT/config/install-joomla-extension.php $LANDO_WEBROOT/cli
-    - appserver: php $LANDO_WEBROOT/cli/install-joomla-extension.php --package="$LANDO_MOUNT/www/tmp/the-extension.zip"
-    - appserver: rm $LANDO_WEBROOT/cli/install-joomla-extension.php
-
-  post-install-j4:
-    - appserver: curl -L https://github.com/joomla/joomla-cms/releases/download/4.0.0-alpha8/Joomla_4.0.0-alpha8-Alpha-Full_Package.tar.gz | tar zxv -C $LANDO_WEBROOT
-
-  post-install-patchtester:
-    - appserver: curl -L https://github.com/joomla-extensions/patchtester/releases/download/3.0.0-beta4/com_patchtester.tar.gz > $LANDO_MOUNT/www/tmp/com_patchtester.tar.gz
-    - appserver: cp $LANDO_MOUNT/config/install-joomla-extension.php $LANDO_WEBROOT/cli
-    - appserver: php $LANDO_WEBROOT/cli/install-joomla-extension.php --package="$LANDO_MOUNT/www/tmp/com_patchtester.tar.gz"
-    - appserver: rm $LANDO_WEBROOT/cli/install-joomla-extension.php
-
-  post-dev-config:
-      - appserver: test -e $LANDO_MOUNT/www/configuration.php && sh $LANDO_MOUNT/config/dev-configuration.sh
-
-  post-kick-restore:
-    - appserver: cd $LANDO_WEBROOT; wget -O kickstart.zip https://www.akeebabackup.com/download/akeeba-kickstart/6-0-1/kickstart-core-6-0-1-zip.zip
-    - appserver: cd $LANDO_WEBROOT; unzip kickstart.zip kickstart.php
-    - appserver: cd $LANDO_WEBROOT; php kickstart.php *.jpa
-    - appserver: cd $LANDO_WEBROOT; rm kickstart.*
-    - appserver: cd $LANDO_WEBROOT; rm .htaccess
-
-  post-unite-restore:
-    - appserver: test -e $LANDO_MOUNT/config/joomla-unite_tpl.xml && sh $LANDO_MOUNT/config/unite-setup.sh *.jpa $LANDO_APP_NAME $LANDO_WEBROOT
-    - database: test -e $LANDO_MOUNT/www/joomla-unite.tmp && sh $LANDO_MOUNT/config/unite-setup-db.sh $MYSQL_DATABASE $MYSQL_USER $MYSQL_PASSWORD
-    - appserver: cp /lando/unite.phar $LANDO_MOUNT/www
-    - appserver: cd $LANDO_MOUNT/www; php unite.phar joomla-unite.xml
-    - appserver: test -e $LANDO_MOUNT/www/configuration.php && sh $LANDO_MOUNT/config/dev-configuration.sh
-    - appserver: rm $LANDO_MOUNT/www/unite.phar
-    - appserver: rm $LANDO_MOUNT/www/joomla-unite.xml
+    cmd:
+      - echo Restoring Akeeba .jpa backup …
+      - test -e $LANDO_MOUNT/config/joomla-unite_tpl.xml &&
+        sh $LANDO_MOUNT/config/unite-setup.sh *.jpa $LANDO_APP_NAME $LANDO_WEBROOT &&
+        sh $LANDO_MOUNT/config/unite-setup-db.sh $replace-with-a-name$db $replace-with-a-name$db $replace-with-a-name$db &&
+        cp /lando/unite.phar $LANDO_MOUNT/www &&
+        cd $LANDO_MOUNT/www; php unite.phar joomla-unite.xml &&
+        test -e $LANDO_MOUNT/www/configuration.php &&
+        sh $LANDO_MOUNT/config/dev-configuration.sh &&
+        rm $LANDO_MOUNT/www/unite.phar &&
+        rm $LANDO_MOUNT/www/joomla-unite.xml
