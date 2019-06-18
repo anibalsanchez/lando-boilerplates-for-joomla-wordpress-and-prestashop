@@ -279,7 +279,10 @@ Great! The site is ready, and available on APPSERVER URLS, there is also a phpmy
 
     `lando install`
 
-After installation, visit one of the APPSERVER URLS. In our case, https://ps.lndo.site.
+After installation, visit one of the APPSERVER URLS. In our case, https://ps.lndo.site. The administrator credentials are:
+
+- Username: pub@prestashop.com
+- Password: 0123456789
 
 ## Copyright & License
 
