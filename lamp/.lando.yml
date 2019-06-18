@@ -1,4 +1,4 @@
-##
+#
 # package     Extly.VM
 # subpackage  Lando Boilerplate - https://github.com/anibalsanchez/lando-lamp-boilerplate
 #
@@ -9,6 +9,7 @@
 #
 # WORKING WITH LAMP - https://docs.devwithlando.io/tutorials/lamp.html
 #
+# REQUIREMENTS: Lando 3.0.0-RC.2+ - Tested on 3.0.0-RC.17
 
 name: $replace-with-a-name$
 recipe: lamp
@@ -21,97 +22,32 @@ proxy:
   mailhog:
     - mailhog.lndo.site
 
+config:
+  php: '7.2'
+  via: apache
+  webroot: www
+  xdebug: true
+  config:
+    php: config/php.ini
+
 services:
   appserver:
-    type: php:7.0
-    via: apache
-    ssl: true
-    webroot: www
-    config:
-      conf: config/php.ini
-    xdebug: true
-    overrides:
-      services:
-        # A nice http://localhost:8080
-        ports: ['8080:80']
-    ## run_as_root:
-      # - "apt-get -y update"
-
-      # apt-get install php7.2-xml
-      # apt-get install php7.2-zip
-      # apt-get install php7.2-curl
-      # apt-get install php7.2-gd
-
-      ## Ubuntu - apt-get install -y php7.0-gd
-      # - "apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng12-dev"
-      # - "docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/"
-      # - "docker-php-ext-install gd"
-
-      # Ubuntu - apt-get install -y php7.0-tidy
-      # - "apt-get -y install libtidy-dev"
-      # - "docker-php-ext-install tidy"
-
-      # Ubuntu - "apt-get install -y php7.1-xsl"
-      #
-      # https://hub.docker.com/r/phpdocker/phpdocker/~/dockerfile/
-      # - "apt-get install -y libxml2-dev libxslt-dev"
-      # - "docker-php-ext-install dom xmlrpc xsl"
-
-      # - "apt-get install -y libxml2-dev php-soap"
-      # - "docker-php-ext-install soap"
-
-      #
-      # LIBSODIUM_VERSION      1.0.16 - (1/2)
-      #
-      # - "mkdir $LANDO_MOUNT/libsodium"
-      # - "cd $LANDO_MOUNT/libsodium"
-      # - "curl -kLo $LANDO_MOUNT/libsodium/libsodium.tar.gz https://download.libsodium.org/libsodium/releases/libsodium-1.0.16.tar.gz"
-      # - "tar xvzf $LANDO_MOUNT/libsodium/libsodium.tar.gz --strip-components=1 --directory=."
-      # - "./configure"
-      # - "make && make check && make install"
-      #
-      # PECL_LIBSODIUM_VERSION      2.0.10 - (2/2)
-      #
-      # - "pecl install libsodium"
-      # - "docker-php-ext-enable sodium"
-      # - "rm -rf $LANDO_MOUNT/libsodium"
+    ports:
+      # A nice http://localhost:8080
+      - '8080:80'
 
   database:
     type: mysql
-    ## portforward: 3306
     creds:
       user: $replace-with-a-name$db
       password: $replace-with-a-name$db
       database: $replace-with-a-name$db
-    # overrides:
-    #   services:
-    #     image: 'mysql:5.5'
+
   pma:
     type: phpmyadmin
 
-  # phpcli:
-  #   type: php:7.0
-  #   via: cli
-  #   xdebug: true
-
   mailhog:
     type: mailhog
-    ## portforward: 1025
     hogfrom:
       - appserver
-
-tooling:
-  composer:
-    service: appserver
-    description: Run composer commands
-    cmd:
-      - composer
-      - --ansi
-  php:
-    service: appserver
-
-  mysql:
-    user: root
-    service: database
-    description: Drop into a MySQL shell
 
