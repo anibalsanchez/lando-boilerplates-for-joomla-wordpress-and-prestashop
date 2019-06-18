@@ -1,4 +1,4 @@
-##
+#
 # package     Extly.VM
 # subpackage  Lando Boilerplate - https://github.com/anibalsanchez/lando-lamp-boilerplate
 #
@@ -7,8 +7,8 @@
 # license     MIT
 # link        http://extly.tech
 #
-# WORKING WITH LAMP - https://docs.devwithlando.io/tutorials/lamp.html
-#
+
+# REQUIREMENTS: Lando 3.0.0-RC.2+ - Tested on 3.0.0-RC.17
 
 name: $replace-with-a-name$
 recipe: lamp
@@ -26,20 +26,18 @@ config:
   via: apache
   webroot: www
   xdebug: true
-  ssl: true
+  config:
+    php: config/php.ini
 
 services:
   appserver:
-    config:
-      conf: config/php.ini
-    overrides:
-      services:
-        # A nice http://localhost:8080
-        ports: ['8080:80']
+    ports:
+      # A nice http://localhost:8080
+      - '8080:80'
 
   database:
     type: mysql
-    ## portforward: 3306
+    portforward: 3306
     creds:
       user: $replace-with-a-name$db
       password: $replace-with-a-name$db
@@ -50,43 +48,16 @@ services:
 
   mailhog:
     type: mailhog
-    ## portforward: 1025
+    portforward: 1025
     hogfrom:
       - appserver
 
 tooling:
-  composer:
-    service: appserver
-    description: Run composer commands
-    cmd:
-      - composer
-      - --ansi
-  php:
-    service: appserver
-
-  mysql:
-    user: root
-    service: database
-    description: Drop into a MySQL shell
 
   install:
     service: appserver
-    description: "Command to install PrestaShop."
-    cmd: echo "Installing PrestaShop ... (email pub@prestashop.com - password 0123456789)"
-
-  dev-config:
-    service: appserver
-    description: "Apply my default configuration for PS Development"
-    cmd: echo Configuring my defaults in configuration.php for PS Development…
-
-events:
-  # Runs composer install and a custom php script after your app starts
-  ## post-start:
-    ## - appserver: cd $LANDO_MOUNT && composer init
-    ## - appserver: cd $LANDO_WEBROOT && php script.php
-
-  post-install:
-    - appserver: cd $LANDO_WEBROOT; unzip prestashop_1.7.*.zip; rm prestashop_1.7.*.zip
-    - appserver: cd $LANDO_WEBROOT; unzip -o prestashop.zip; rm prestashop.zip
-    - appserver: cd $LANDO_WEBROOT; php install/index_cli.php -- --domain=$replace-with-a-name$.lndo.site --db_server=database --db_name=$MYSQL_DATABASE --db_user=$MYSQL_USER --db_password=$MYSQL_PASSWORD
-    - appserver: cd $LANDO_WEBROOT; rm -rf install
+    description: "Command to install PrestaShop (You must download and copy the prestashop.zip file into the www folder first)."
+    cmd:
+      - sh config/pre_install.sh
+      - php config/install_ps.php
+      - sh config/post_install.sh
