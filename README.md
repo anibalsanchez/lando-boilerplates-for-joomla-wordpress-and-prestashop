@@ -22,7 +22,7 @@ In my practice, I have configured the recipes to have the following services:
 
 ### Step 1 - Review and Customize the Recipe
 
-Open the `.lando.yml` and replace the **$replace-with-a-name$** (including the $) with the **myname** of your local development site.
+Open the `.lando.yml` and replace the `$replace-with-a-name$` (including the $) with the **myname** of your local development site.
 
 The recipe is going to create:
 
@@ -204,9 +204,82 @@ To install [WordPress](https://wordpress.org/), you can download the latest Word
 
     lando wp-install
 
-### LAMP Recipe
-
 ### PrestaShop Recipe
+
+#### Step 1 - Review and Customize the PrestaShop Recipe
+
+Open the `.lando.yml` and replace the `$replace-with-a-name$` (including the $) with the **myname** of your local development site. For instance, in this sample recipe, `$replace-with-a-name$` has been replaced with `ps`.
+
+The recipe is going to create:
+
+- A site with the **myname**. In this sample recipe, `ps`.
+
+A database with these connection settings:
+
+- Host Name: database
+- User **mynamedb** (`psdb`)
+- Password **mynamedb** (`psdb`)
+- Database: **mynamedb** (`psdb`)
+
+#### Step 2 - Review and Customize the Recipe for PrestaShop
+
+- To start the Docker container:
+
+    `lando start`
+
+After starting the container, you will receive a command line output like this one:
+
+```bash
+BOOMSHAKALAKA!!!
+
+Your app has started up correctly.
+Here are some vitals:
+
+ NAME            ps
+ LOCATION        /home/anibal/3_VM/ps
+ SERVICES        appserver, database, pma, mailhog
+ APPSERVER URLS  https://localhost:33887
+                 http://localhost:8080
+                 http://localhost:33886
+                 http://ps.lndo.site
+                 https://ps.lndo.site
+ PMA URLS        http://localhost:33888
+                 http://phpmyadmin.lndo.site
+                 https://phpmyadmin.lndo.site
+ MAILHOG URLS    http://localhost:33885
+                 http://mailhog.lndo.site
+                 https://mailhog.lndo.site
+```
+
+Great! The site is ready, and available on APPSERVER URLS, there is also a phpmyadmin and a mailhog.
+
+- To stop the Docker container:
+
+    `lando stop`
+
+- To restart the Docker container:
+
+   `lando restart`
+
+- To rebuild the Docker container:
+
+    `lando rebuild`
+
+- To destroy the Docker container (destroy for ever):
+
+    `lando destroy`
+
+- To access the mysql server:
+
+    `lando mysql`
+
+#### Step 3 - Optional commands for PrestaShop
+
+- To install the latest [PrestaShop](https://www.joomla.org), please [download](https://www.prestashop.com/en/previous-versions) the zip file (<https://www.prestashop.com/en/previous-versions>) and copy it into the _www_ folder. Then, execute this command:
+
+    `lando install`
+
+After installation, visit one of the APPSERVER URLS. In our case, https://ps.lndo.site.
 
 ## Copyright & License
 
