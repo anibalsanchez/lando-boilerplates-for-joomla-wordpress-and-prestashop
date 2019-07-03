@@ -36,6 +36,11 @@ services:
     ports:
       # A nice http://localhost:8080
       - '8080:80'
+    # ADDING OR REMOVING EXTENSIONS - https://docs.devwithlando.io/tutorials/php.html#adding-or-removing-extensions
+    # build_as_root:
+    #   - apt-get update -y
+    #   - apt-get install -y libxml2-dev libxslt-dev
+    #   - docker-php-ext-install dom xmlrpc xsl
 
   database:
     type: mysql
