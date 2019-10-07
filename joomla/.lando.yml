@@ -72,7 +72,7 @@ tooling:
     description: "Command to install Joomla 3."
     cmd:
       - echo Installing Joomla ...
-      - curl -L https://downloads.joomla.org/cms/joomla3/3-9-8/Joomla_3-9-8-Stable-Full_Package.tar.gz?format=gz |
+      - curl -L https://downloads.joomla.org/cms/joomla3/3-9-12/Joomla_3-9-12-Stable-Full_Package.tar.gz?format=gz |
         tar zxv -C $LANDO_WEBROOT
 
   install-j4:
@@ -80,7 +80,7 @@ tooling:
     description: "Command to install Joomla 4."
     cmd:
       - echo Installing Joomla 4 ...
-      - curl -L https://github.com/joomla/joomla-cms/releases/download/4.0.0-alpha9/Joomla_4.0.0-alpha9-Alpha-Full_Package.tar.gz |
+      - curl -L https://github.com/joomla/joomla-cms/releases/download/4.0.0-alpha11/Joomla_4.0.0-alpha11-Alpha-Full_Package.tar.gz |
         tar zxv -C $LANDO_WEBROOT
 
   install-extension:
