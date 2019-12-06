@@ -59,6 +59,11 @@ services:
     hogfrom:
       - appserver
 
+  node:
+    type: node
+    globals:
+      gulp-cli: latest
+
 tooling:
 
   # Tooling Example
@@ -135,3 +140,13 @@ tooling:
         sh $LANDO_MOUNT/config/dev-configuration.sh &&
         rm $LANDO_MOUNT/www/unite.phar &&
         rm $LANDO_MOUNT/www/joomla-unite.xml
+
+  npm:
+    service: node
+  node:
+    service: node
+  gulp:
+    service: node
+  yarn:
+    service: node
+
