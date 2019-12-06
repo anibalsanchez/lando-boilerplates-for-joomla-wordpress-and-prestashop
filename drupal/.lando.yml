@@ -1,0 +1,80 @@
+#
+# package     Extly.VM
+# subpackage  Lando Boilerplate - https://github.com/anibalsanchez/lando-lamp-boilerplate
+#
+# author      Extly, CB.
+# copyright   Copyright (C) 2018 Andrea Gentil - Anibal Sanchez <team@extly.com>
+# license     MIT
+# link        http://extly.tech
+#
+# WORKING WITH DRUPAL
+# https://docs.lando.dev/config/drupal7.html#getting-started
+# https://docs.lando.dev/config/drupal8.html#getting-started
+
+# REQUIREMENTS: Lando 3.0.0-RC.2+ - Tested on 3.0.0-RC.17
+
+name: $replace-with-a-name$
+recipe: drupal8 # / drupal7
+
+proxy:
+  appserver:
+    - $replace-with-a-name$.lndo.site
+  pma:
+    - phpmyadmin.lndo.site
+  mailhog:
+    - mailhog.lndo.site
+
+config:
+  php: '7.2'
+  via: apache
+  webroot: www
+  xdebug: true
+  config:
+    php: config/php.ini
+
+services:
+  appserver:
+    ports:
+      # A nice http://localhost:8080
+      - '8080:80'
+    # ADDING OR REMOVING EXTENSIONS - https://docs.devwithlando.io/tutorials/php.html#adding-or-removing-extensions
+    # build_as_root:
+    #   - apt-get update -y
+    #   - apt-get install -y libxml2-dev libxslt-dev
+    #   - docker-php-ext-install dom xmlrpc xsl
+
+  database:
+    type: mysql
+    portforward: 3306
+    creds:
+      user: $replace-with-a-name$db
+      password: $replace-with-a-name$db
+      database: $replace-with-a-name$db
+
+  pma:
+    type: phpmyadmin
+
+  mailhog:
+    type: mailhog
+    portforward: 1025
+    hogfrom:
+      - appserver
+
+  # node:
+  #   type: node
+  #   globals:
+  #     gulp-cli: latest
+
+tooling:
+  # Tooling Example
+  # https://github.com/lando/lando/tree/master/examples/tooling
+  # USING SCRIPTY THINGS
+  # https://docs.devwithlando.io/config/services.html#using-scripty-things
+  # npm:
+  #   service: node
+  # node:
+  #   service: node
+  # gulp:
+  #   service: node
+  # yarn:
+  #   service: node
