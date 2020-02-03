@@ -136,6 +136,8 @@ After the installation, remember to execute `lando dev-config`, to apply the bes
 lando unite-restore
 ```
 
+NOTE: `unite.phar` must be copied into `/home/-user-/.lando`.
+
 After the installation, remember to execute `lando dev-config`, to apply the best practices.
 
 ### Step 4 - Optional commands for Joomla - JMAD18 SPECIAL EDITION
