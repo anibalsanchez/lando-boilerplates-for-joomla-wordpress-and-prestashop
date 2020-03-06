@@ -41,6 +41,14 @@ services:
     #   - apt-get update -y
     #   - apt-get install -y libxml2-dev libxslt-dev
     #   - docker-php-ext-install dom xmlrpc xsl
+################## 
+    # UNCOMMMENT THIS TO SETUP JOOMLA 4 FROM GITHUB REPOSITORY
+    # build_as_root:
+    #   - apt-get update -y
+    #   - apt-get install -y re2c libmhash-dev libmcrypt-dev file libgmp-dev
+    #   - ln -s /usr/include/x86_64-linux-gnu/gmp.h /usr/local/include/
+    #   - docker-php-ext-configure gmp
+    #   - docker-php-ext-install dom xmlrpc gmp
 
   database:
     type: mysql
