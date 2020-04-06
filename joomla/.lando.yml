@@ -36,13 +36,23 @@ services:
     ports:
       # A nice http://localhost:8080
       - '8080:80'
-    # ADDING OR REMOVING EXTENSIONS - https://docs.devwithlando.io/tutorials/php.html#adding-or-removing-extensions
+
+    #
+    # PHP / Adding or removing extensions
+    # https://docs.devwithlando.io/tutorials/php.html#adding-or-removing-extensions
+    #
+
+    #
+    # Uncommment this snippet to setup PHP XSL Library for SobiPro
+    #
     # build_as_root:
     #   - apt-get update -y
     #   - apt-get install -y libxml2-dev libxslt-dev
     #   - docker-php-ext-install dom xmlrpc xsl
-################## 
-    # UNCOMMMENT THIS TO SETUP JOOMLA 4 FROM GITHUB REPOSITORY
+
+    #
+    # Uncommment this snippet to setup Joomla 4 from the GitHub repository
+    #
     # build_as_root:
     #   - apt-get update -y
     #   - apt-get install -y re2c libmhash-dev libmcrypt-dev file libgmp-dev

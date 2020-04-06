@@ -31,5 +31,6 @@ mv plugins/system/jotmarker plugins/system/jotmarker.disabled 2> /dev/null
 mv plugins/twofactorauth plugins/twofactorauth.disabled 2> /dev/null
 
 mv .htaccess htaccess.disabled 2> /dev/null
+cp htaccess.txt .htaccess 2> /dev/null
 
 echo Configured!
