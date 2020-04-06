@@ -34,7 +34,7 @@ config:
 services:
   appserver:
     ports:
-      # A nice http://localhost:8080
+    # A nice handy known-local port  http://localhost:8080
       - '8080:80'
 
     #
