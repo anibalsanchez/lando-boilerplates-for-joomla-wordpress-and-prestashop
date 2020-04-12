@@ -147,8 +147,6 @@ lando unite-restore-s3
 ```
 You will be asked for the filename (without the extension), the s3 bucket, the s3 region and the filepath.
 
-NOTE: `unite.phar` must be copied into `/home/-user-/.lando`.
-
 After the installation, remember to execute `lando dev-config`, to apply the best practices.
 
 ### Step 4 - Optional commands for Joomla - JMAD18 SPECIAL EDITION
