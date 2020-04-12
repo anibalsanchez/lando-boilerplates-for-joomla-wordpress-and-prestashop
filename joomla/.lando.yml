@@ -157,6 +157,49 @@ tooling:
         sh $LANDO_MOUNT/config/dev-configuration.sh &&
         rm $LANDO_MOUNT/www/unite.phar &&
         rm $LANDO_MOUNT/www/joomla-unite.xml
+
+  unite-restore-s3:
+    service: appserver
+    description: 'Full restore of an Akeeba .jpa backup with Unite from Amazon s3'
+    cmd:
+      - echo Resetting lando site $…
+      - test -e $LANDO_MOUNT/config/unite-s3-setup.sh &&
+        sh $LANDO_MOUNT/config/unite-s3-setup.sh $replace-with-a-name$db $replace-with-a-name$db $replace-with-a-name$db $LANDO_WEBROOT $LANDO_APP_NAME joomla-unite_tpl_s3.xml
+      - sh $LANDO_MOUNT/config/unite-setup-db.sh $replace-with-a-name$db $replace-with-a-name$db $replace-with-a-name$db &&
+        cp /lando/unite.phar $LANDO_MOUNT/www &&
+        cd $LANDO_MOUNT/www; php unite.phar joomla-unite.xml &&
+        test -e $LANDO_MOUNT/www/configuration.php &&
+        sh $LANDO_MOUNT/config/dev-configuration.sh &&
+        sh $LANDO_MOUNT/config/remove-unite-files.sh $LANDO_WEBROOT
+    level: app
+    options:
+      jpa_filename:
+        describe: The jpa filename to download
+        passthrough: true
+        interactive:
+          type: input
+          message: What is the backup filename (without .jpa extension)?
+      s3_bucket:
+        describe: The amazon s3 bucket
+        passthrough: true
+        interactive:
+          type: input
+          message: What is the name of the amazon s3 bucket?
+          default: bucket-name
+      s3_region:
+        describe: The amazon s3 region
+        passthrough: true
+        interactive:
+          type: input
+          message: Input an amazon s3 region?
+          default: eu-west-3
+      s3_filepath:
+        describe: The jpa filepath in the bucket
+        passthrough: true
+        interactive:
+          type: input
+          message: Input the file path?
+          default: filepath/
   # npm:
   #   service: node
   # node:
