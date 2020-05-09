@@ -31,6 +31,9 @@ config:
   config:
     php: config/php.ini
 
+# Disable key loading - https://docs.lando.dev/config/ssh.html#customizing
+keys: false
+
 services:
   appserver:
     ports:
