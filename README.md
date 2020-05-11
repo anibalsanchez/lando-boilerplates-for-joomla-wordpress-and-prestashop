@@ -14,6 +14,14 @@ In my practice, I have configured the recipes to have the following services:
 - phpMyAdmin, to handle the administration of MySQL
 - MailHog, to handle SMTP testing of mails
 
+Available customized Lando recipes:
+
+- Drupal
+- Joomla
+- General LAMP
+- PrestaShop
+- WordPress
+
 ## How to Start
 
 - Choose which CMS you want to install and copy only those files into the destination folder `mydevsite` (remember to also copy the hidden `.lando.yml`). Follow the next steps.
