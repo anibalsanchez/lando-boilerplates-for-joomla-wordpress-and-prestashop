@@ -1,0 +1,84 @@
+#
+# package     Extly.VM
+# subpackage  Lando Boilerplate - https://github.com/anibalsanchez/lando-lamp-boilerplate
+#
+# author      Extly, CB.
+# copyright   Copyright (C) 2018 Andrea Gentil - Anibal Sanchez <team@extly.com>
+# license     MIT
+# link        http://extly.tech
+#
+# WORKING WITH JOOMLA - https://docs.devwithlando.io/tutorials/joomla.html
+#
+
+# REQUIREMENTS: Lando 3.0.0-RC.2+ - Tested on v3.0.1
+
+name: $replace-with-a-name$
+recipe: laravel
+
+proxy:
+  appserver:
+    - $replace-with-a-name$.lndo.site
+  pma:
+    - phpmyadmin.lndo.site
+  mailhog:
+    - mailhog.lndo.site
+
+config:
+  php: '7.4'
+  via: apache
+  webroot: public
+  xdebug: true
+  config:
+    php: config/php.ini
+
+# Disable key loading - https://docs.lando.dev/config/ssh.html#customizing
+keys: false
+
+services:
+  appserver:
+    ports:
+    # A nice handy known-local port  http://localhost:8080
+      - '8080:80'
+
+    #
+    # PHP / Adding or removing extensions
+    # https://docs.devwithlando.io/tutorials/php.html#adding-or-removing-extensions
+    #
+
+    #
+    # Uncommment this snippet to setup PHP XSL Library for SobiPro
+    #
+    # build_as_root:
+    #   - apt-get update -y
+    #   - apt-get install -y libxml2-dev libxslt-dev
+    #   - docker-php-ext-install dom xmlrpc xsl
+
+    #
+    # Uncommment this snippet to setup Joomla 4 from the GitHub repository
+    #
+    # build_as_root:
+    #   - apt-get update -y
+    #   - apt-get install -y re2c libmhash-dev libmcrypt-dev file libgmp-dev
+    #   - ln -s /usr/include/x86_64-linux-gnu/gmp.h /usr/local/include/
+    #   - docker-php-ext-configure gmp
+    #   - docker-php-ext-install dom xmlrpc gmp
+
+    build_as_root:
+      - composer global require laravel/installer
+
+  database:
+    type: mysql
+    portforward: 3306
+    creds:
+      user: $replace-with-a-name$db
+      password: $replace-with-a-name$db
+      database: $replace-with-a-name$db
+
+  pma:
+    type: phpmyadmin
+
+  mailhog:
+    type: mailhog
+    portforward: 1025
+    hogfrom:
+      - appserver

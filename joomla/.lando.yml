@@ -3,14 +3,14 @@
 # subpackage  Lando Boilerplate - https://github.com/anibalsanchez/lando-lamp-boilerplate
 #
 # author      Extly, CB.
-# copyright   Copyright (C) 2018 Andrea Gentil - Anibal Sanchez <team@extly.com>
+# copyright   Copyright (C) 2018-2020 Andrea Gentil - Anibal Sanchez <team@extly.com>
 # license     MIT
 # link        http://extly.tech
 #
 # WORKING WITH JOOMLA - https://docs.devwithlando.io/tutorials/joomla.html
 #
 
-# REQUIREMENTS: Lando 3.0.0-RC.2+ - Tested on 3.0.0-RC.17
+# REQUIREMENTS: Lando 3.0.0-RC.2+ - Tested on v3.0.1
 
 name: $replace-with-a-name$
 recipe: joomla

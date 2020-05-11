@@ -4,7 +4,7 @@
  * @package     Extly.VM
  *
  * @author      Extly, CB. <team@extly.com>
- * @copyright   Copyright (C) 2018 Andrea Gentil - Anibal Sanchez <team@extly.com>
+ * @copyright   Copyright (C) 2018-2020 Andrea Gentil - Anibal Sanchez <team@extly.com>
  * @license     MIT
  *
  * @see         https://www.extly.com
