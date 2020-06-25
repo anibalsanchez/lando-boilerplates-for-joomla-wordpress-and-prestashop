@@ -3,18 +3,20 @@
 # subpackage  Lando Boilerplate - https://github.com/anibalsanchez/lando-lamp-boilerplate
 #
 # author      Extly, CB.
-# copyright   Copyright (C) 2018-2020 Andrea Gentil - Anibal Sanchez <team@extly.com>
+# copyright   Copyright (C) 2012-2020 Extly, CB <team@extly.com>
 # license     MIT
-# link        http://extly.tech
+# link        https://extly.com
 #
 # WORKING WITH DRUPAL
 # https://docs.lando.dev/config/drupal7.html#getting-started
 # https://docs.lando.dev/config/drupal8.html#getting-started
 
-# REQUIREMENTS: Lando 3.0.0-RC.2+ - Tested on 3.0.0-RC.17
+# REQUIREMENTS: Lando 3.0.0-RC.2+ - Tested on 3.0.6
 
 name: $replace-with-a-name$
-recipe: drupal8 # / drupal7
+# recipe: drupal7
+# recipe: drupal8
+recipe: drupal9
 
 proxy:
   appserver:
@@ -31,6 +33,9 @@ config:
   xdebug: true
   config:
     php: config/php.ini
+
+# Disable key loading - https://docs.lando.dev/config/ssh.html#customizing
+keys: false
 
 services:
   appserver:

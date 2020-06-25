@@ -1,6 +1,6 @@
 # Lando Boilerplates for Joomla, WordPress and PrestaShop
 
-**REQUIREMENTS**: Lando 3.0.0-RC.2+ - Tested on 3.0.0-RC.17. Download the latest Lando release from: <https://github.com/lando/lando/releases>.
+**REQUIREMENTS**: Lando 3.0.0-RC.2+ - Tested on 3.0.6. Download the latest Lando release from: <https://github.com/lando/lando/releases>.
 
 Recipes for [Lando](https://docs.devwithlando.io/) - Docker containers. Tested with Joomla, WordPress, PrestaShop, etc.
 
@@ -358,5 +358,5 @@ After installation, visit one of the APPSERVER URLS. In our case, https://ps.lnd
 
 ## Copyright & License
 
-- Copyright (c)2007-2019 Extly, CB. All rights reserved.
+- Copyright (c)2012-2020 Extly, CB. All rights reserved.
 - Distributed under the MIT license
