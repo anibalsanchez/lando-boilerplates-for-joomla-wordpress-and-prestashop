@@ -13,7 +13,7 @@
 
             // server -> local
             "pathMappings": {
-                "/app/public": "${workspaceRoot}/public"
+                "/app": "${workspaceRoot}"
             }
         },
         {
