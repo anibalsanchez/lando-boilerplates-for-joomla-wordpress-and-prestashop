@@ -49,7 +49,10 @@ services:
     #   - docker-php-ext-install dom xmlrpc xsl
 
   database:
-    type: mysql
+    type: mysql:5.7
+    # type: mysql:8.0
+    # config:
+    #   database: config/mysql8.cnf
     portforward: 3306
     creds:
       user: $replace-with-a-name$db
