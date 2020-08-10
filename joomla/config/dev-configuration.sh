@@ -29,6 +29,7 @@ mv plugins/system/jch_optimize plugins/system/jch_optimize.disabled 2> /dev/null
 mv plugins/system/jotcache plugins/system/jotcache.disabled 2> /dev/null
 mv plugins/system/jotmarker plugins/system/jotmarker.disabled 2> /dev/null
 mv plugins/twofactorauth plugins/twofactorauth.disabled 2> /dev/null
+mv plugins/loginguard plugins/loginguard.disabled 2> /dev/null
 
 mv .htaccess htaccess.disabled 2> /dev/null
 cp htaccess.txt .htaccess 2> /dev/null
