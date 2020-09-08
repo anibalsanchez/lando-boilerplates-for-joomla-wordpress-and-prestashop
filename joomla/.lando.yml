@@ -83,6 +83,12 @@ services:
     hogfrom:
       - appserver
 
+  # To syncronize balanced front-ends based on Varnish with Redis PubSub
+  # pubsub:
+  #   type: redis
+  #   portforward: 6379
+
+  # To run node commands
   # node:
   #   type: node
   #   globals:
