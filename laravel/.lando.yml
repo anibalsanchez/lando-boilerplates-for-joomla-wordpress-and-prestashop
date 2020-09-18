@@ -86,3 +86,7 @@ services:
     portforward: 1025
     hogfrom:
       - appserver
+
+  cache:
+    type: redis
+    portforward: 6379
