@@ -356,6 +356,10 @@ After installation, visit one of the APPSERVER URLS. In our case, https://ps.lnd
 - Username: pub@prestashop.com
 - Password: 0123456789
 
+## Trusting the CA
+
+[Trusting the CA](https://docs.lando.dev/config/security.html#trusting-the-ca)
+
 ## Copyright & License
 
 - Copyright (c)2012-2020 Extly, CB. All rights reserved.

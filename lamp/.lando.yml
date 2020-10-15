@@ -33,8 +33,11 @@ config:
 services:
   appserver:
     ports:
-      # A nice http://localhost:8080
+    # A nice handy known-local port  http://localhost:8080
       - '8080:80'
+
+    # Bind my exposes services to all intefaces
+    #  - "0.0.0.0::80"
 
   database:
     type: mysql:5.7

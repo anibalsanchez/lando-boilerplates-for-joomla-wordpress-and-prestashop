@@ -40,6 +40,9 @@ services:
     # A nice handy known-local port  http://localhost:8080
       - '8080:80'
 
+    # Bind my exposes services to all intefaces
+    #  - "0.0.0.0::80"
+
     #
     # PHP / Adding or removing extensions
     # https://docs.devwithlando.io/tutorials/php.html#adding-or-removing-extensions
