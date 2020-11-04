@@ -68,6 +68,10 @@ services:
     #   - docker-php-ext-install dom xmlrpc gmp
 
     build_as_root:
+      # Apache mod headers
+      - a2enmod headers
+
+      # Laravel Instaler
       - composer global require laravel/installer
 
   database:

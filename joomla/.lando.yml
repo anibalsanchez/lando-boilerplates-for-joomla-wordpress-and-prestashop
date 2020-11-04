@@ -48,6 +48,10 @@ services:
     # https://docs.devwithlando.io/tutorials/php.html#adding-or-removing-extensions
     #
 
+    build_as_root:
+      # Apache mod headers
+      - a2enmod headers
+
     #
     # Uncommment this snippet to setup PHP XSL Library for SobiPro
     #
