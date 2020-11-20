@@ -9,12 +9,15 @@
             "name": "Listen for XDebug",
             "type": "php",
             "request": "launch",
+            // "hostname": "192.168....",
             "port": 9099,
-            
+
             // server -> local
             "pathMappings": {
                 "/app/www": "${workspaceRoot}/www"
-            }            
+            }
+
+            // "log": false
         },
         {
             "name": "Launch currently open script",

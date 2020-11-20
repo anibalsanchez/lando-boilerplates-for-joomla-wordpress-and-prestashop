@@ -27,6 +27,10 @@ config:
   via: apache
   webroot: www
   xdebug: true
+
+  # To force Composer v1
+  composer_version: '1.10.17'
+
   config:
     php: config/php.ini
 
