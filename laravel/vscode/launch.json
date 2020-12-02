@@ -18,6 +18,13 @@
             }
 
             // "log": false
+
+            // xdebug-3.0.0
+            // "xdebugSettings": {
+            //     "max_children": 10000,
+            //     "max_data": 10000,
+            //     "show_hidden": 1
+            // }
         },
         {
             "name": "Launch currently open script",

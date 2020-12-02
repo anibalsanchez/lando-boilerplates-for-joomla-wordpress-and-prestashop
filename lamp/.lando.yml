@@ -43,6 +43,14 @@ services:
     # Bind my exposes services to all intefaces
     #  - "0.0.0.0::80"
 
+    build_as_root:
+      # Apache mod headers
+      - a2enmod headers
+
+      # Install xdebug-2.9.8, wait until Xdebug 3 is fully tested
+      - pecl uninstall xdebug
+      - pecl install xdebug-2.9.8
+
   database:
     type: mysql:5.7
     # type: mysql:8.0
