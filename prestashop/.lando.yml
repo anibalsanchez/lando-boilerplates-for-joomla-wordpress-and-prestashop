@@ -50,8 +50,8 @@ services:
       - a2enmod headers
 
       # Install xdebug-2.9.8, wait until Xdebug 3 is fully tested
-      - pecl uninstall xdebug
-      - pecl install xdebug-2.9.8
+      # - pecl uninstall xdebug
+      # - pecl install xdebug-2.9.8
 
   database:
     type: mysql:5.7

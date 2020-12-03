@@ -9,22 +9,13 @@
             "name": "Listen for XDebug",
             "type": "php",
             "request": "launch",
-            // "hostname": "192.168....",
+            // A custom port for Xdebug
             "port": 9099,
 
             // server -> local
             "pathMappings": {
                 "/app/www": "${workspaceRoot}/www"
             }
-
-            // "log": false
-
-            // xdebug-3.0.0
-            // "xdebugSettings": {
-            //     "max_children": 10000,
-            //     "max_data": 10000,
-            //     "show_hidden": 1
-            // }
         },
         {
             "name": "Launch currently open script",
