@@ -68,23 +68,23 @@ services:
       # - pecl install mcrypt-1.0.3
       # - docker-php-ext-enable mcrypt
 
-    #
-    # Uncommment this snippet to setup PHP XSL Library for SobiPro
-    #
-    # build_as_root:
-    #   - apt-get update -y
-    #   - apt-get install -y libxml2-dev libxslt-dev
-    #   - docker-php-ext-install dom xmlrpc xsl
+      #
+      # Uncommment this snippet to setup PHP XSL Library for SobiPro
+      #
+      # build_as_root:
+      #   - apt-get update -y
+      #   - apt-get install -y libxml2-dev libxslt-dev
+      #   - docker-php-ext-install dom xmlrpc xsl
 
-    #
-    # Uncommment this snippet to setup Joomla 4 from the GitHub repository
-    #
-    # build_as_root:
-    #   - apt-get update -y
-    #   - apt-get install -y re2c libmhash-dev libmcrypt-dev file libgmp-dev
-    #   - ln -s /usr/include/x86_64-linux-gnu/gmp.h /usr/local/include/
-    #   - docker-php-ext-configure gmp
-    #   - docker-php-ext-install dom xmlrpc gmp
+      #
+      # Uncommment this snippet to setup Joomla 4 from the GitHub repository
+      #
+      # build_as_root:
+      #   - apt-get update -y
+      #   - apt-get install -y re2c libmhash-dev libmcrypt-dev file libgmp-dev
+      #   - ln -s /usr/include/x86_64-linux-gnu/gmp.h /usr/local/include/
+      #   - docker-php-ext-configure gmp
+      #   - docker-php-ext-install dom xmlrpc gmp
 
   database:
     type: mysql:5.7
