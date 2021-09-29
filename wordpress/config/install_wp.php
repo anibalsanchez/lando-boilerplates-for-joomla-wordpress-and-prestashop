@@ -23,6 +23,7 @@ $dbPassword = $landoInfo['database']['creds']['password'];
 $cmd = [
     "cd $landoWebroot;",
     'wp core download',
+    // '--locale=es_ES',
 ];
 $installScript = implode(' ', $cmd);
 shell_exec($installScript);
@@ -35,6 +36,7 @@ $cmd = [
     '--dbname='.$dbName,
     '--dbuser='.$dbUser,
     '--dbpass='.$dbPassword,
+    // '--locale=es_ES',
 ];
 $installScript = implode(' ', $cmd);
 shell_exec($installScript);
@@ -43,7 +45,10 @@ $cmd = [
     "cd $landoWebroot;",
     'wp core install',
     '--url="'.$url.'"',
-    '--title="Test Blog Title" --admin_user="admin" --admin_password="admin" --admin_email="no-reply@extly.com"',
+    '--title="Test Blog Title"',
+    '--admin_user="team@extly.com"',
+    '--admin_password="team@extly.com"',
+    '--admin_email="team@extly.com"',
 
 ];
 $installScript = implode(' ', $cmd);
