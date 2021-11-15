@@ -87,7 +87,8 @@ services:
       #   - docker-php-ext-install dom xmlrpc gmp
 
   database:
-    type: mysql:5.7
+    type: mysql
+    # type: mysql:5.7
     # type: mysql:8.0
     # config:
     #   database: config/mysql8.cnf
@@ -116,6 +117,11 @@ services:
   #   type: node
   #   globals:
   #     gulp-cli: latest
+
+env_file:
+  # Secured procedure for installing Joomla with a remote database
+  # https://docs.joomla.org/J3.x:Secured_procedure_for_installing_Joomla_with_a_remote_database
+  - config/defaults.env
 
 tooling:
   # Tooling Example
