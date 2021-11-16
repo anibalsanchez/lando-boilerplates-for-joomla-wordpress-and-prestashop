@@ -16,6 +16,7 @@ cat configuration.php.bak | \
     sed "s/\$smtphost = '[^']\+'/\$smtphost = 'mailhog'/g" | \
     sed "s/\$smtppass = '[^']\+'/\$smtppass = ''/g" | \
     sed "s/\$smtpport = '[^']\+'/\$smtpport = '1025'/g" | \
+    sed "s/\$smtpport = [0-9]+/\$smtpport = 1025/g" | \
     sed "s/\$smtpsecure = '[^']\+'/\$smtpsecure = 'none'/g" | \
     sed "s/\$smtpuser = '[^']\+'/\$smtpuser = ''/g" \
     > configuration.php.new
