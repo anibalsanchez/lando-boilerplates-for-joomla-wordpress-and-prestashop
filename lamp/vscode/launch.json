@@ -42,10 +42,10 @@
                 "-dxdebug.mode=debug",
                 "-dxdebug.start_with_request=yes",
                 "-S",
-                "localhost:0"
+                "localhost:8088"
             ],
             "program": "",
-            "cwd": "${workspaceRoot}",
+            "cwd": "${workspaceRoot}/www",
             "port": 9099,
             "serverReadyAction": {
                 "pattern": "Development Server \\(http://localhost:([0-9]+)\\) started",
