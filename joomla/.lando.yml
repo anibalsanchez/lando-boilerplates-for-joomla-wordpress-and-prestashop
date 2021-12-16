@@ -30,7 +30,7 @@ config:
   xdebug: true
 
   # To force Composer v1
-  # composer_version: '1.10.17'
+  # composer_version: '1.10.24'
 
   config:
     php: config/php.ini
