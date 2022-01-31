@@ -10,7 +10,7 @@
 # WORKING WITH LARAVEL - https://docs.lando.dev/config/laravel.html#getting-started
 #
 
-# REQUIREMENTS: Lando 3.0.0-RC.2+ - Tested on 3.0.7
+# REQUIREMENTS: Lando 3
 
 name: $replace-with-a-name$
 recipe: laravel
