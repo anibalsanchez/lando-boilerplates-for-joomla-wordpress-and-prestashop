@@ -1,10 +1,10 @@
 <?php
 
 /*
- * @package     Extly.VM
+ * @package     Extly.Container
  *
  * @author      Extly, CB. <team@extly.com>
- * @copyright   Copyright (C) 2012-2020 Extly, CB <team@extly.com>
+ * @copyright   Copyright (C) 2012-2025 Extly, CB <team@extly.com>
  * @license     MIT
  *
  * @see         https://www.extly.com

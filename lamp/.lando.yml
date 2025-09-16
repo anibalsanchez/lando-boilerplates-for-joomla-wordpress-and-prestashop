@@ -1,36 +1,32 @@
 #
-# package     Extly.VM
+# package     Extly.Container
 # subpackage  Lando Boilerplate - https://github.com/anibalsanchez/lando-lamp-boilerplate
 #
 # author      Extly, CB.
-# copyright   Copyright (C) 2012-2020 Extly, CB <team@extly.com>
+# copyright   Copyright (C) 2012-2025 Extly, CB <team@extly.com>
 # license     MIT
 # link        https://extly.com
 #
-# WORKING WITH LAMP - https://docs.devwithlando.io/tutorials/lamp.html
+# WORKING WITH LAMP - https://docs.lando.dev/plugins/lamp/index.html
 #
 # REQUIREMENTS: Lando 3
 
-name: $replace-with-a-name$
+name: <NEW-CONTAINER-NAME>
 recipe: lamp
 
 proxy:
   appserver:
-    - $replace-with-a-name$.lndo.site
+    - <NEW-CONTAINER-NAME>.lndo.site
   pma:
     - phpmyadmin.lndo.site
   mailhog:
     - mailhog.lndo.site
 
 config:
-  php: "8.1"
+  php: "8.4"
   via: apache
   webroot: www
   xdebug: true
-
-  # To force Composer v1
-  # composer_version: '1.10.24'
-
   config:
     php: config/php.ini
 
@@ -55,13 +51,11 @@ services:
     type: mysql
     # type: mysql:5.7
     # type: mysql:8.0
-    # config:
-    #   database: config/mysql8.cnf
     portforward: 3306
     creds:
-      user: $replace-with-a-name$db
-      password: $replace-with-a-name$db
-      database: $replace-with-a-name$db
+      user: <NEW-CONTAINER-NAME>db
+      password: <NEW-CONTAINER-NAME>db
+      database: <NEW-CONTAINER-NAME>db
 
   pma:
     type: phpmyadmin

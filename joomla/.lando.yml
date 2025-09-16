@@ -1,23 +1,23 @@
 #
-# package     Extly.VM
+# package     Extly.Container
 # subpackage  Lando Boilerplate - https://github.com/anibalsanchez/lando-lamp-boilerplate
 #
 # author      Extly, CB.
-# copyright   Copyright (C) 2012-2020 Extly, CB <team@extly.com>
+# copyright   Copyright (C) 2012-2025 Extly, CB <team@extly.com>
 # license     MIT
 # link        https://extly.com
 #
-# WORKING WITH JOOMLA - https://docs.devwithlando.io/tutorials/joomla.html
+# WORKING WITH JOOMLA - https://docs.lando.dev/plugins/joomla/index.html
 #
 
 # REQUIREMENTS: Lando 3
 
-name: $replace-with-a-name$
+name: <NEW-CONTAINER-NAME>
 recipe: lamp
 
 proxy:
   appserver:
-    - $replace-with-a-name$.lndo.site
+    - <NEW-CONTAINER-NAME>.lndo.site
   pma:
     - phpmyadmin.lndo.site
   mailhog:
@@ -29,10 +29,6 @@ config:
   via: apache
   webroot: www
   xdebug: true
-
-  # To force Composer v1
-  # composer_version: '1.10.24'
-
   config:
     php: config/php.ini
 
@@ -91,13 +87,11 @@ services:
     type: mysql
     # type: mysql:5.7
     # type: mysql:8.0
-    # config:
-    #   database: config/mysql8.cnf
     portforward: 3306
     creds:
-      user: $replace-with-a-name$db
-      password: $replace-with-a-name$db
-      database: $replace-with-a-name$db
+      user: <NEW-CONTAINER-NAME>db
+      password: <NEW-CONTAINER-NAME>db
+      database: <NEW-CONTAINER-NAME>db
 
   pma:
     type: phpmyadmin
@@ -192,7 +186,7 @@ tooling:
       - echo Restoring Akeeba .jpa backup …
       - test -e $LANDO_MOUNT/config/joomla-unite_tpl.xml &&
         sh $LANDO_MOUNT/config/unite-setup.sh *.jpa $LANDO_APP_NAME $LANDO_WEBROOT &&
-        sh $LANDO_MOUNT/config/unite-setup-db.sh $replace-with-a-name$db $replace-with-a-name$db $replace-with-a-name$db &&
+        sh $LANDO_MOUNT/config/unite-setup-db.sh <NEW-CONTAINER-NAME>db <NEW-CONTAINER-NAME>db <NEW-CONTAINER-NAME>db &&
         cp /lando/unite.phar $LANDO_MOUNT/www &&
         cd $LANDO_MOUNT/www; php unite.phar joomla-unite.xml &&
         test -e $LANDO_MOUNT/www/configuration.php &&
@@ -206,8 +200,8 @@ tooling:
     cmd:
       - echo Resetting lando site $…
       - test -e $LANDO_MOUNT/config/unite-s3-setup.sh &&
-        sh $LANDO_MOUNT/config/unite-s3-setup.sh $replace-with-a-name$db $replace-with-a-name$db $replace-with-a-name$db $LANDO_WEBROOT $LANDO_APP_NAME joomla-unite_tpl_s3.xml
-      - sh $LANDO_MOUNT/config/unite-setup-db.sh $replace-with-a-name$db $replace-with-a-name$db $replace-with-a-name$db &&
+        sh $LANDO_MOUNT/config/unite-s3-setup.sh <NEW-CONTAINER-NAME>db <NEW-CONTAINER-NAME>db <NEW-CONTAINER-NAME>db $LANDO_WEBROOT $LANDO_APP_NAME joomla-unite_tpl_s3.xml
+      - sh $LANDO_MOUNT/config/unite-setup-db.sh <NEW-CONTAINER-NAME>db <NEW-CONTAINER-NAME>db <NEW-CONTAINER-NAME>db &&
         cp /lando/unite.phar $LANDO_MOUNT/www &&
         cd $LANDO_MOUNT/www; php unite.phar joomla-unite.xml &&
         test -e $LANDO_MOUNT/www/configuration.php &&
