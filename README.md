@@ -1,6 +1,6 @@
 # Lando Boilerplates for Joomla, WordPress and PrestaShop
 
-**REQUIREMENTS**: Lando 3.0.0-RC.2+ - Tested on 3.0.6. Download the latest Lando release from: <https://github.com/lando/lando/releases>.
+**REQUIREMENTS**: Lando 3 - Download the latest Lando release from: <https://github.com/lando/lando/releases>.
 
 Recipes for [Lando](https://docs.devwithlando.io/) - Docker containers. Tested with Joomla, WordPress, PrestaShop, etc.
 

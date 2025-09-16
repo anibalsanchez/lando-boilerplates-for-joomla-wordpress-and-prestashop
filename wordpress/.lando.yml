@@ -23,7 +23,7 @@ proxy:
     - mailhog.lndo.site
 
 config:
-  php: '8.1'
+  php: "8.1"
   via: apache
   webroot: www
   xdebug: true
@@ -40,8 +40,8 @@ keys: false
 services:
   appserver:
     ports:
-    # A nice handy known-local port  http://localhost:8080
-      - '8080:80'
+      # A nice handy known-local port  http://localhost:8080
+      - "8080:80"
 
     # Bind my exposes services to all intefaces
     #  - "0.0.0.0::80"

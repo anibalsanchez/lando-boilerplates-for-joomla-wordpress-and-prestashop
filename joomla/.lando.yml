@@ -13,7 +13,7 @@
 # REQUIREMENTS: Lando 3
 
 name: $replace-with-a-name$
-recipe: joomla
+recipe: lamp
 
 proxy:
   appserver:
@@ -24,7 +24,8 @@ proxy:
     - mailhog.lndo.site
 
 config:
-  php: '8.1'
+  php: "8.4"
+  database: mysql
   via: apache
   webroot: www
   xdebug: true
@@ -41,8 +42,8 @@ keys: false
 services:
   appserver:
     ports:
-    # A nice handy known-local port  http://localhost:8080
-      - '8080:80'
+      # A nice handy known-local port  http://localhost:8080
+      - "8080:80"
 
     # Bind my exposes services to all intefaces
     #  - "0.0.0.0::80"
@@ -132,7 +133,7 @@ tooling:
 
   install:
     service: appserver
-    description: 'Command to install Joomla 3.'
+    description: "Command to install Joomla 3."
     cmd:
       - echo Installing Joomla ...
       - curl -L https://downloads.joomla.org/cms/joomla3/3-9-12/Joomla_3-9-12-Stable-Full_Package.tar.gz?format=gz |
@@ -140,7 +141,7 @@ tooling:
 
   install-j4:
     service: appserver
-    description: 'Command to install Joomla 4.'
+    description: "Command to install Joomla 4."
     cmd:
       - echo Installing Joomla 4 ...
       - curl -L https://github.com/joomla/joomla-cms/releases/download/4.0.0-alpha11/Joomla_4.0.0-alpha11-Alpha-Full_Package.tar.gz |
@@ -148,7 +149,7 @@ tooling:
 
   install-extension:
     service: appserver
-    description: 'Command to install an extension (Thanks to Akeeba https://github.com/akeeba/vagrant/blob/master/assets/joomla/install-joomla-extension.php).'
+    description: "Command to install an extension (Thanks to Akeeba https://github.com/akeeba/vagrant/blob/master/assets/joomla/install-joomla-extension.php)."
     cmd:
       - echo Installing the extension ...
       - cp $LANDO_MOUNT/config/install-joomla-extension.php $LANDO_WEBROOT/cli &&
@@ -157,7 +158,7 @@ tooling:
 
   install-patchtester:
     service: appserver
-    description: 'Command to install the Joomla Patch Tester.'
+    description: "Command to install the Joomla Patch Tester."
     cmd:
       - echo Installing the Patch Tester ...
       - curl -L https://github.com/joomla-extensions/patchtester/releases/download/3.0.0-beta4/com_patchtester.tar.gz > "$LANDO_WEBROOT/tmp/com_patchtester.tar.gz"
@@ -167,7 +168,7 @@ tooling:
 
   dev-config:
     service: appserver
-    description: 'Apply my default configuration for JDevelopment'
+    description: "Apply my default configuration for JDevelopment"
     cmd:
       - echo Configuring my defaults in configuration.php for JDevelopment…
       - test -e $LANDO_MOUNT/www/configuration.php &&
@@ -175,7 +176,7 @@ tooling:
 
   kick-restore:
     service: appserver
-    description: 'Restore an Akeeba .jpa backup with Kickstart'
+    description: "Restore an Akeeba .jpa backup with Kickstart"
     cmd:
       - echo Restoring Akeeba .jpa backup …
       - cd $LANDO_WEBROOT &&
@@ -186,7 +187,7 @@ tooling:
 
   unite-restore:
     service: appserver
-    description: 'Full restore of an Akeeba .jpa backup with Unite'
+    description: "Full restore of an Akeeba .jpa backup with Unite"
     cmd:
       - echo Restoring Akeeba .jpa backup …
       - test -e $LANDO_MOUNT/config/joomla-unite_tpl.xml &&
@@ -201,7 +202,7 @@ tooling:
 
   unite-restore-s3:
     service: appserver
-    description: 'Full restore of an Akeeba .jpa backup with Unite from Amazon s3'
+    description: "Full restore of an Akeeba .jpa backup with Unite from Amazon s3"
     cmd:
       - echo Resetting lando site $…
       - test -e $LANDO_MOUNT/config/unite-s3-setup.sh &&

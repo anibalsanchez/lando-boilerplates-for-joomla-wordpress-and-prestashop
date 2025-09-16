@@ -22,7 +22,7 @@ proxy:
     - mailhog.lndo.site
 
 config:
-  php: '7.2'
+  php: "7.2"
   via: apache
   webroot: www
   xdebug: true
@@ -39,8 +39,8 @@ keys: false
 services:
   appserver:
     ports:
-    # A nice handy known-local port  http://localhost:8080
-      - '8080:80'
+      # A nice handy known-local port  http://localhost:8080
+      - "8080:80"
 
     # Bind my exposes services to all intefaces
     #  - "0.0.0.0::80"
@@ -75,7 +75,6 @@ services:
       - appserver
 
 tooling:
-
   install:
     service: appserver
     description: "Command to install PrestaShop (You must download and copy the prestashop.zip file into the www folder first)."
